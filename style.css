@@ -1,19 +1,55 @@
+@font-face {
+    font-family: roboto;
+    src: url(/Roboto/Roboto-Black.ttf);
+}
+body {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
 .header {
     display: flex;
     justify-content: space-between;
+    background-color: black;
+    padding: 0 5rem;
 }
 .header__logo img {
-    display: inline-block;
+    /* display: inline-block; */
     width: 40px;
+    height: 40px;
 }
-.header__logo h1 {
+.header__logo span {
     display: inline-block;
+    color: white;
+    /* margin: 0; */
+}
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    width: 35rem;
+}
+.header__menu a {
+    color: white;
+    text-decoration: none;
 }
 
-.header__menu {
-    background-color: red;
+.header__menu ul li a {
+    color: white;
+    text-decoration: none;
 }
-.header__menu ul {
-    display: flex;
-    list-style: none;
+.header__form-link div {
+    display: inline-block;
+}
+.header__form-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.main__hero {
+    background-color: black;
+    height: 100vh;
+}
+
+.main__hero h1 {
+    margin: 0;
+    color: white;
 }

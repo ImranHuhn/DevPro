@@ -1,26 +1,31 @@
 @font-face {
-    font-family: roboto;
-    src: url(/Roboto/Roboto-Black.ttf);
+    font-family: Roboto-Light;
+    src: url(/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(/Roboto/Roboto-Bold.ttf);
 }
 body {
     box-sizing: border-box;
-    font-family: Roboto;
+    font-family: Roboto-Light;
+    position: relative;
 }
 .header {
     display: flex;
-    justify-content: space-between;
-    background-color: black;
-    padding: 0 5rem;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+
 }
 .header__logo img {
-    /* display: inline-block; */
     width: 40px;
     height: 40px;
 }
 .header__logo span {
     display: inline-block;
     color: white;
-    /* margin: 0; */
+    font-family: Roboto-Bold;
 }
 .header__menu {
     display: flex;
@@ -46,10 +51,25 @@ body {
 
 .main__hero {
     background-color: black;
+    background-image: url(/img/Ornament.png);
     height: 100vh;
+}
+
+.main__hero div {
+    display: inline-block;
+    position: relative;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .main__hero h1 {
     margin: 0;
     color: white;
+    text-align: center;
+}
+.main__hero div p {
+    margin: 0;
+    color: white;
+    text-align: center;
 }

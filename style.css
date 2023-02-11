@@ -10,7 +10,7 @@
 
 body {
     box-sizing: border-box;
-    font-family: Roboto-Light;
+    font-family: 'Roboto-Light';
     position: relative;
     width: 100vw;
     overflow-x: hidden;
@@ -33,7 +33,7 @@ body {
 .header__logo h1 {
     display: inline-block;
     color: white;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     font-size: 24px;
     margin-left: 10px;
 }
@@ -115,7 +115,7 @@ body {
     margin: 0 0 30px 0;
     color: white;
     text-align: center;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     font-size: 72px;
 }
 
@@ -133,7 +133,7 @@ body {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     text-shadow: 0px 5px 10px #000000;
 }
 
@@ -156,7 +156,7 @@ body {
 
 .green-section h2 {
     font-size: 72px;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     margin: 0;
     padding-top: 140px;
 }
@@ -217,7 +217,7 @@ body {
 }
 
 .social-proof h2 {
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     font-size: 64px;
 }
 
@@ -254,17 +254,18 @@ body {
 .social-feed {
     background-color: #FAFAFA;
     max-height: 2209px;
+    padding: 10rem 0;
 }
 
 .social-feed__title {
     display: block;
-    padding: 10% 0 5%;
+    padding-bottom: 5rem;
 }
 
 .social-feed h2 {
     text-align: center;
     font-size: 64px;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
     color: black;
 }
 
@@ -287,23 +288,36 @@ body {
     max-width: 800px;
 }
 
-.social-feed button {
+.social-feed__btn {
     display: block;
-    margin: 0 auto;
+    margin: 5rem auto 0;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 20px 40px;
+    font-weight: bolder;
 }
 
 .subscription {
     background-color: black;
     text-align: center;
     height: 1128px;
+    padding: 10rem 0 0;
 }
 
 .subscription h2 {
     color: white;
+    margin: 0;
+    font-size: 64px;
+    font-family: 'Roboto-Bold';
+    margin-bottom: 5rem;
 }
 
 .subscription p {
-    color: #F5F5F5;
+    color: gray;
+    /* font-family: 'Roboto-Bold'; */
+    font-weight: 600;
 }
 
 .active-white {
@@ -313,8 +327,10 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 95px;
+    height: 50px;
+    transform: translateY(15px);
+    margin: 0 1rem;
 }
 
 .switch input { 
@@ -338,10 +354,10 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 34px;
+    width: 34px;
+    left: 5px;
+    bottom: 8px;
     background-color:#A8FF35;
     -webkit-transition: .4s;
     transition: .4s;
@@ -356,9 +372,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
 }
 
 .slider.round {
@@ -371,6 +387,11 @@ input:checked + .slider:before {
 
 .sub__container {
     display: inline-flex;
+    margin-bottom: 3rem;
+}
+
+.sub__container p {
+    font-size: 24px;
 }
 
 .sub__card-container {
@@ -380,28 +401,64 @@ input:checked + .slider:before {
     width: 85%;
 }
 
+.sub__card {
+    width: 20rem;
+    height: 640px;
+    background-color: white;
+    padding: 32px;
+    border-radius: 20px;
+    position: relative;
+}
+
 .sub__card--text h3 {
     /* color: black; */
     text-align: left;
+    font-size: 36px;
+    font-family: 'Roboto-Bold';
+    margin: 0;
 }
 
 .sub__card--text p {
     color: black;
     text-align: left;
+    margin: 0;
+}
+
+.sub__card--text hr {
+    margin: 2rem 0 2.5rem;
+}
+
+.sub__card--text span {
+    font-size: 64px;
+    font-family: 'Roboto-Bold';
+}
+
+.sub__card--text ul {
+    list-style-image: url(./img/Vector\ 167\ \(Stroke\).png);
+    padding-left: 2rem;
+    line-height: 3rem;
+    font-weight: 600;
 }
 
 .sub__card--text li {
-    /* color: black; */
     text-align: left;
+    padding-left: 1rem;
 }
 
-
-.sub__card {
-    width: 360px;
-    height: 640px;
-    background-color: white;
-    padding: 32px;
-    border-radius: 10px;
+.sub__card--btn {
+    text-decoration: none;
+    color:black;
+    width: 15rem;
+    padding: 1.4rem 2rem;
+    display: block;
+    border-radius: 40px;
+    position: absolute;
+    bottom: 2rem;
+    background-color: #A8FF35;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 40px;
+    font-family: 'Roboto-Bold';
 }
 
 .active-green {
@@ -409,42 +466,68 @@ input:checked + .slider:before {
 }
 
 .active-black {
-    background-color: black;
+    background-color: black !important;
+    color: white !important;
 }
 
 .call-to-act {
     background-color: #A8FF35;
     height: 539px;
+    position: relative;
 }
 
 .call-to-act h2 {
     margin: 0;
+    padding-top: 7rem;
     text-align: center;
+    font-family: 'Roboto-Bold';
+    font-size: 72px;
+}
+
+.call-to-act h2 span {
+    opacity: .2;
 }
 
 .call-to-act__btn {
-    display: flex;
-    justify-content: center;
+    display: inline-block;
+    margin-top: 3rem;
+    text-decoration: none;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 1.3rem 4rem;
+    border-radius: 30px;
+    font-weight: 600;
 }
 
 .footer {
     display: flex;
     justify-content: space-between;
+    padding: 1rem 5rem;
+}
+
+.footer__logo img {
+    transform: translateY(0.7rem);
 }
 
 .footer__logo h3 {
     display: inline-block;
+    font-family: 'Roboto-Bold';
 }
 
 .footer__link {
     display: flex;
     justify-content: space-around;
     width: 35rem;
+    transform: translateY(1.5rem);
 }
 
 .footer__link-ul {
     display: contents;
     list-style-type: none;
+    font-weight: 600;
 }
 
 .footer__link-ul a {

@@ -229,26 +229,44 @@ body {
 .social-proof h3 {
     text-align: center;
     font-size: 64px;
-    font-family: Roboto-Bold;
+    font-family: 'Roboto-Bold';
 }
+
+
+
+
+
+
+
+
+
+
 
 .social-proof__companies {
     display: grid;
+    /* gap: 1rem; */
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 60%;
-    margin: 0 auto 5%;
+    margin: 0 auto 5rem;
+    /* background-color: #F5F5F5; */
 }
 
 .social-proof__company {
-    padding: 40px 38px;
+    padding: 1rem; 
     background-color: #F5F5F5;
-    margin: 4% auto;
-    border-radius: 5px;
+    margin: 3rem auto; 
+    width: 80%; 
+    height: 65%;
+    position: relative;
+    border-radius: 10px;
 }
 
 .social-proof__company img {
-    width: 190px;
-    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
 }
 
 .social-feed {
@@ -533,4 +551,31 @@ input:checked + .slider:before {
 .footer__link-ul a {
     text-decoration: none;
     color: black;
+}
+
+
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
 }

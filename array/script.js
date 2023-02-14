@@ -55,18 +55,18 @@ console.log(data3.find((el) => el === 3)); //this is an arraow function that use
 /////////////////////////////////////////////
 // Pick 10 favorite methods, and recreate with prototype method
 
-// Array.prototype.map()
-// Array.prototype.reduce()
-// Array.prototype.indexOf()
-// Array.prototype.filter()
-// Array.prototype.concat()
-// Array.prototype.every()
-// Array.prototype.forEach()
-// Array.prototype.lastIndexOf()
-// Array.prototype.some()
-// Array.prototype.push()
-// Array.prototype.pop()
-// Array.prototype.splice()
+Array.prototype.map
+Array.prototype.reduce
+Array.prototype.indexOf
+Array.prototype.filter
+Array.prototype.concat
+Array.prototype.every
+Array.prototype.forEach
+Array.prototype.lastIndexOf
+Array.prototype.some
+Array.prototype.push
+Array.prototype.pop
+Array.prototype.splice
 
 const array1 = [1,2,3,4]
 

@@ -70,7 +70,16 @@ console.log(data3.find((el) => el === 3)); //this is an arraow function that use
 
 const array1 = [1,2,3,4]
 
-Array.prototype.map() = undefined;
-console.log(array1.map(x => x * 2));
+console.log(Array.prototype.map)
+Array.prototype.map = undefined;
+console.log(Array.prototype.map)
 
+Array.prototype.map = function(){
+    const newArray = [];
+    for(let i = 0; i < array1.length; i++){
+        newArray.push(array1[i]);
+    }
+}
+
+console.log(newArray);
 

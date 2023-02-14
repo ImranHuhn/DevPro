@@ -70,16 +70,19 @@ Array.prototype.splice
 
 const array1 = [1,2,3,4]
 
-console.log(Array.prototype.map)
-Array.prototype.map = undefined;
-console.log(Array.prototype.map)
+console.log(Array.prototype.map) //test if method exist
+console.log(array1.map(x => x)) //test to check array
+console.log(array1.map(x => x * 2)) //test to multiply array by 2
+Array.prototype.map = undefined; //remove method from prototype
+console.log(Array.prototype.map) //check if prototype indeed doesn't exist
 
-Array.prototype.map = function(){
+Array.prototype.map = function(callback){ //created map method
     const newArray = [];
-    for(let i = 0; i < array1.length; i++){
-        newArray.push(array1[i]);
+    for(let i = 0; i < this.length; i++){
+        newArray.push(callback(this[i]));
     }
+    return newArray;
 }
-
-console.log(newArray);
+console.log('new array: ' + array1.map(x => x))
+console.log('new array: ' + array1.map(x => x * 2))
 

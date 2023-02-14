@@ -68,6 +68,9 @@ Array.prototype.push
 Array.prototype.pop
 Array.prototype.splice
 
+
+///////////////////////////////////
+// map method
 const array1 = [1,2,3,4]
 
 console.log(Array.prototype.map) //test if method exist
@@ -77,12 +80,19 @@ Array.prototype.map = undefined; //remove method from prototype
 console.log(Array.prototype.map) //check if prototype indeed doesn't exist
 
 Array.prototype.map = function(callback){ //created map method
-    const newArray = [];
+    let newArray = [];
     for(let i = 0; i < this.length; i++){
         newArray.push(callback(this[i]));
+        // newArray += callback(this[i]);
     }
     return newArray;
 }
 console.log('new array: ' + array1.map(x => x))
 console.log('new array: ' + array1.map(x => x * 2))
 
+/////////////////////////////////////
+// reduce method
+
+const array2 = [1,2,3,4]
+
+console.log(Array.prototype.reduce)

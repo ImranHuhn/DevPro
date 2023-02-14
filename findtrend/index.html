@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <title>Findtrend Webflow</title>
 </head>
@@ -14,8 +13,8 @@
             <img src="./img/logoimg.png" alt="findtrent-logo-green">
             <h1>Findtrend</h1>
         </section>
-        <section class="header__menu">
-            <ul class="header__menu-ul">
+        <section class="header__menu menu">
+            <ul class="header__menu-ul menu-ul">
                 <li><a href="#">About</a></li>
                 <li><a href="#">How it work</a></li>
                 <li><a href="#">Pricing</a></li>
@@ -23,15 +22,43 @@
                 <li><a href="#">Features</a></li>
             </ul>
         </section>
-        <section class="header__form-link">
+        <section class="header__form-link form-link">
             <div>
                 <a href="#">Login</a>
             </div>
-            <div class="header__form-register">
+            <div class="header__form-register form-register">
                 <a href="#">Register</a>
             </div>
         </section>
+        <section class="mobile-btn">
+            <div class="mobile-btn__bars">
+                <img class="mobile-btn__bar1" src="./img/bar.png" alt="menu-bar">
+                <img class="mobile-btn__bar2" src="./img/bar.png" alt="menu-bar">
+            </div>
+        </section>
+        <section class="mobile-menu">
+            <div class="mobile-menu__display">
+                <section class="mobile__menu menu">
+                    <ul class="mobile__menu-ul menu-ul">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">How it work</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Solution</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </section>
+                <section class="mobile__form-link form-link">
+                    <div>
+                        <a href="#">Login</a>
+                    </div>
+                    <div class="mobile__form-register form-register">
+                        <a href="#">Register</a>
+                    </div>
+                </section>
+            </div>
+        </section>
     </header>
+    <div class="mobile-menu__dim-bg"></div>
     <main class="main">
         <section class="hero">
             <div>
@@ -47,11 +74,11 @@
         </section>
         <section class="green-section">
             <h2>Open new tabs is sh*t</h2>
-            <div class="green-section__out-container">
-                <div class="green-section__in-container">
+            <div class="green-section__container">
+                <div class="green-section__blk-tag">
                     <img src="./img/Vector (1).png" alt="findtrend-icon">
                     <h3>Findtrend - Elon Musk</h3>
-                    <div class="green-section__x">X</div>
+                    <div class="green-section__blk-tag--x">X</div>
                 </div>
             </div>
             <p class="green-section__text">A solution for your browser tabs and don't make your device get slower over time. Get<br>

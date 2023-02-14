@@ -1,0 +1,58 @@
+.active-display {
+    display: block !important;
+}
+
+.menu {
+    width: 35rem;
+    margin-top: 25px;
+    /* margin-left: 3%; */
+}
+
+.menu-ul {
+    list-style-type: none;
+    font-weight: bolder;
+}
+
+.menu-ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.form-link {
+    margin-top: 25px;
+    width: 15rem;
+}
+
+.form-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.form-register {
+    background-color: white;
+    padding: 15px 40px;
+    color: black;
+    border-radius: 30px;
+    /* transform: translateY(-15px); */
+}
+
+.form-register a {
+    background-color: white;
+    color: black;
+}
+
+.blk-tag {
+    background-color: black;
+    display: inline-block;
+    position: relative;
+    padding: 10px 35px;
+    margin: 25px 45px;
+}

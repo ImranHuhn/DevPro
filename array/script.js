@@ -1,9 +1,9 @@
 /////////////////////////////////
 // how to create array methods
 
-const data1 = [1,2,3,4];
+const data1 = [1, 2, 3, 4];
 
-Array.prototype.poop = function(){
+Array.prototype.poop = function () {
     console.log('poopy');
 }
 
@@ -15,15 +15,15 @@ data1.poop()
 ///////////////////////////////////
 // recreating reverse method
 
-const data2 = [1,2,3,4];
+const data2 = [1, 2, 3, 4];
 
-Array.prototype.reverse = undefined; 
+Array.prototype.reverse = undefined;
 console.log('reverse method is now: ' + Array.prototype.reverse); // this is to demonstrate that the reverse method have been overwritten
 
 //this will demonstrate that the reverse method is overwritten with new code and will immitate reverse arrays differrent from the original codebase
-Array.prototype.reverse = function(){
+Array.prototype.reverse = function () {
     const data2 = [];
-    for(let i = this.length - 1; i >= 0; i--){
+    for (let i = this.length - 1; i >= 0; i--) {
         // console.log(this[i]);
         data2.push(this[i]);
     }
@@ -36,13 +36,13 @@ console.log(data2.reverse());
 /////////////////////////////////////
 //reproducing the find method
 
-const data3 = [1,2,3,4];
+const data3 = [1, 2, 3, 4];
 
-Array.prototype.find = function(callback){ // callback is the paramater. parameter is just an empty variable that gets declared on this line. when calling a function that has a value or another function inside the parenthatsis like below with (el) => el === 3), which then is called an argument. that is when the parameter gets defined for the declared variable as seen below. In this particular case, this is a function parameter which is a function inside a function call below with the argument (el) => el === 3)
+Array.prototype.find = function (callback) { // callback is the paramater. parameter is just an empty variable that gets declared on this line. when calling a function that has a value or another function inside the parenthatsis like below with (el) => el === 3), which then is called an argument. that is when the parameter gets defined for the declared variable as seen below. In this particular case, this is a function parameter which is a function inside a function call below with the argument (el) => el === 3)
     let found = null;
 
-    for(let i = 0; i < this.length; i++){
-        if(callback(this[i])){ 
+    for (let i = 0; i < this.length; i++) {
+        if (callback(this[i])) {
             found = this[i];
             break;
         }
@@ -72,7 +72,7 @@ Array.prototype.splice
 
 ///////////////////////////////////
 // 1) map method
-const array1 = [1,2,3,4]
+const array1 = [1, 2, 3, 4]
 
 console.log('test if map method exist:')
 console.log(Array.prototype.map) //test if method exist
@@ -89,9 +89,9 @@ console.log('test if map method is removed:')
 console.log(Array.prototype.map) //check if prototype indeed doesn't exist
 
 //creating a constructor for array prototypes
-Array.prototype.map = function(callback){ //created map method
+Array.prototype.map = function (callback) { //created map method
     const newArray = [];
-    for(let i = 0; i < this.length; i++){
+    for (let i = 0; i < this.length; i++) {
         // newArray += callback(this[i]); //this is for concatinating characters
         newArray.push(callback(this[i]));
     }
@@ -108,7 +108,7 @@ console.log('==================================================')
 /////////////////////////////////////
 // 2) reduce method
 
-let array2 = [1,2,3,4]
+let array2 = [1, 2, 3, 4]
 
 console.log('test if reduce method exist:')
 console.log(Array.prototype.reduce) //test if method exist
@@ -150,27 +150,27 @@ console.log(Array.prototype.reduce) //check if prototype indeed doesn't exist
 /////////////////////////////////////////////////////////
 
 //function
-    //for each array
-        //return value is now = acc
+//for each array
+//return value is now = acc
 
-    //function arguments
-        //acc
-            //acc is from the previous return loop
-            //on first loop
-                //if initVal is given, then you that
-                //if iniVal is not given the use array[0]
+//function arguments
+//acc
+//acc is from the previous return loop
+//on first loop
+//if initVal is given, then you that
+//if iniVal is not given the use array[0]
 
-    //currVal
-        //the value of array[i]
-            //on first loop
-                //use array[0] if initVal is given
-                //or else use array[1]
+//currVal
+//the value of array[i]
+//on first loop
+//use array[0] if initVal is given
+//or else use array[1]
 
-    //currIn
-        //currVal == array[i]
-            //on first loop
-                //use 0 if initVal is given
-                //other wise, use 1
+//currIn
+//currVal == array[i]
+//on first loop
+//use 0 if initVal is given
+//other wise, use 1
 
 // Array.prototype.reduce = function(acc, currVal, currIn){
 //     acc = this[0];
@@ -200,7 +200,7 @@ console.log(Array.prototype.reduce) //check if prototype indeed doesn't exist
 //     }
 //     return initialValue;
 //   }
-  
+
 ///////////////////////////////////////////////////////
 // Source: https://stackoverflow.com/questions/54482767/issue-with-rewriting-the-reduce-method-js
 
@@ -211,7 +211,7 @@ console.log(Array.prototype.reduce) //check if prototype indeed doesn't exist
 //     }
 //     return initialValue;
 //   }
-  
+
 //   console.log(array2.reduce(x => x * 2)); 
 
 //////////////////////////////////////////////////
@@ -225,17 +225,138 @@ console.log(Array.prototype.reduce) //check if prototype indeed doesn't exist
 // Inline callback function
 // reduce(function (accumulator, currentValue) { /* … */ })
 
-array2 = [1,2,3,4]
+array2 = [1, 2, 3, 4]
 
-Array.prototype.reduce = function(callback){
+Array.prototype.reduce = function (callback) {
     let acc = this[0] //On first call, initialValue if specified, otherwise the value of array[0]
-    for(let i = 1; i < this.length; i++){ //On first call, 0 if initialValue was specified, otherwise 1.
-        acc = callback(acc, this[i])    
+    for (let i = 1; i < this.length; i++) { //On first call, 0 if initialValue was specified, otherwise 1.
+        acc = callback(acc, this[i])
     }
     return acc;
 }
 
-console.log(array2.reduce(x => x)); 
-console.log(array2.reduce(x => x * 2)); 
+console.log(array2.reduce(x => x));
+console.log(array2.reduce(x => x * 2));
 console.log(array2.reduce((a, b) => { return a + b }))
 
+//note: stackoverflow post is wrong. initialValue and accumilation is switched. the output is suppose to be accumilation according to mdn. another thing is the index is suppose to start at index 1 if initiual value is not given when function is being called
+
+/////////////////////////////////////
+// 3) indexOf method
+
+const array3 = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log('test if indexOf method exist:')
+console.log(Array.prototype.indexOf) //test if method exist
+
+console.log(array3.indexOf('bison'));
+// Expected output: 1
+
+// Start from index 2
+console.log(array3.indexOf('bison', 2));
+// Expected output: 4
+
+console.log(array3.indexOf('giraffe'));
+// Expected output: -1
+
+Array.prototype.indexOf = undefined; //remove method from prototype
+
+console.log('test if indexOf method is removed:')
+console.log(Array.prototype.indexOf) //check if prototype indeed doesn't exist
+
+Array.prototype.indexOf = function (x, y) {
+    if (y == undefined) {
+        for (let i = 0; i < this.length; i++) {
+            if (x === this[i]) {
+                return i;
+            }
+        }
+    } else if (y != undefined) {
+        for (let i = y; i < this.length; i++) {
+            if (x === this[i]) {
+                return i;
+            }
+        }
+    }
+    return -1; //got this line from https://stackoverflow.com/questions/53219027/trying-to-recreate-indexof-method-in-javascript
+}
+
+console.log(array3.indexOf('bison'));
+console.log(array3.indexOf('bison', 2));
+console.log(array3.indexOf('giraffe'));
+console.log('==================================================')
+
+/////////////////////////////////////
+// 4) filter method
+
+const array4 = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = array4.filter(word => word.length > 6);
+console.log(array4.filter(word => word.length > 6))
+
+console.log(result);
+// Expected output: Array ["exuberant", "destruction", "present"]
+
+Array.prototype.filter = undefined
+
+console.log(Array.prototype.filter)
+
+Array.prototype.filter = function (callback) {
+    let newArr = [];
+    for (let i = 0; i < this.length; i++) {
+        if (callback(this[i])){
+            newArr.push(this[i])
+            console.log(newArr)
+        }
+    }
+    return newArr;
+}
+
+console.log(array4.filter(word => word.length > 6))
+console.log('==================================================')
+/////////////////////////////////////
+// 5) concat method
+
+const array5a = ['a', 'b', 'c'];
+const array5b = ['d', 'e', 'f'];
+const array5c = array5a.concat(array5b);
+
+console.log(array5c);
+// Expected output: Array ["a", "b", "c", "d", "e", "f"]
+
+console.log(Array.prototype.concat)
+Array.prototype.concat = undefined
+console.log(Array.prototype.concat)
+
+Array.prototype.concat = function(x){
+    let newArr = []
+    newArr.push(this)
+    for(let i = 0; i < x.length; i++){
+        newArr[0].push(x[i]);
+    }
+    return newArr[0]
+}
+
+console.log(array5a.concat(array5b))
+console.log('==================================================')
+
+
+/////////////////////////////////////
+// 6) every method
+
+const isBelowThreshold = (currentValue) => currentValue < 40;
+
+const array6 = [1, 30, 39, 29, 10, 13];
+
+console.log(array6.every(isBelowThreshold));
+// Expected output: true
+
+console.log(Array.prototype.every)
+Array.prototype.every = undefined
+console.log(Array.prototype.every)
+
+Array.prototype.every = function(callback){
+
+}
+
+console.log(array6.every(isBelowThreshold));

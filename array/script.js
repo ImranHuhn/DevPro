@@ -345,18 +345,185 @@ console.log('==================================================')
 // 6) every method
 
 const isBelowThreshold = (currentValue) => currentValue < 40;
+const isBelowThreshold1 = (currentValue) => currentValue > 40;
 
 const array6 = [1, 30, 39, 29, 10, 13];
 
 console.log(array6.every(isBelowThreshold));
 // Expected output: true
 
+console.log(array6.every(isBelowThreshold1));
+// Expected output: false
+
 console.log(Array.prototype.every)
 Array.prototype.every = undefined
 console.log(Array.prototype.every)
 
 Array.prototype.every = function(callback){
-
+    for(let i = 0; i < this.length; i++){
+        if(callback(this[i])){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 console.log(array6.every(isBelowThreshold));
+console.log(array6.every(isBelowThreshold1));
+console.log('==================================================')
+
+
+/////////////////////////////////////
+// 7) forEach method
+
+const array7 = ['a', 'b', 'c'];
+
+array7.forEach(element => console.log(element));
+// Expected output: "a"
+// Expected output: "b"
+// Expected output: "c"
+
+console.log(Array.prototype.forEach)
+Array.prototype.forEach = undefined
+console.log(Array.prototype.forEach)
+
+Array.prototype.forEach = function(callback){
+    newArr = [];
+    for(let i = 0; i < this.length; i++){
+        newArr += callback(this[i])
+    }
+    return newArr;
+}
+
+array7.forEach(element => console.log(element));
+
+
+console.log('==================================================')
+
+
+/////////////////////////////////////
+// 8) lastIndexOf method
+
+const array8 = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
+
+console.log(array8.lastIndexOf('Dodo'));
+// Expected output: 3
+
+console.log(array8.lastIndexOf('Tiger'));
+// Expected output: 1
+
+console.log(array8.lastIndexOf('Dog'));
+// Expected output: -1
+
+console.log(Array.prototype.lastIndexOf)
+Array.prototype.lastIndexOf = undefined
+console.log(Array.prototype.lastIndexOf)
+
+Array.prototype.lastIndexOf = function(x){
+    for(let i = this.length - 1; i >= 0; i--){
+        // console.log(x + ' : ' + this[i] )
+        if(x == this[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+console.log(array8.lastIndexOf('Dodo'));
+console.log(array8.lastIndexOf('Tiger'));
+console.log(array8.lastIndexOf('Dog'));
+console.log('==================================================')
+
+
+/////////////////////////////////////
+// 9) some method
+
+// const array9 = [1, 2, 3, 4, 5];
+
+// // Checks whether an element is even
+// const even = (element) => element % 2 === 0;
+// const odd = (element) => element % 3 === 0 || 1;
+// const ten = (element) => element === 10;
+
+// console.log(array9.some(even));
+// // Expected output: true
+
+// console.log(array9.some(odd));
+// // Expected output: true
+
+// console.log(array9.some(ten));
+// // Expected output: false
+
+// console.log(Array.prototype.some)
+// Array.prototype.some = undefined
+// console.log(Array.prototype.some)
+
+// Array.prototype.some = function(callback){
+//     for(let i = 0; i < this.length; i++){
+//         if(callback(this[i])){
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+// console.log(array9.some(even));
+// console.log(array9.some(odd));
+// console.log(array9.some(ten));
+// console.log('==================================================')
+
+
+// /////////////////////////////////////
+// // 10) push method
+
+// const animals = ['pigs', 'goats', 'sheep'];
+
+// const count = animals.push('cows');
+// console.log(count);
+// // Expected output: 4
+// console.log(animals);
+// // Expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+// animals.push('chickens', 'cats', 'dogs');
+// console.log(animals);
+// // Expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
+
+// console.log(Array.prototype.push)
+// Array.prototype.push = undefined
+// console.log(Array.prototype.push)
+
+// Array.prototype.push = function(x){
+//     let argArrIndex = 0
+//     // const totalLength = this.length + x.length
+//     console.log('this.length: ' + this.length)
+//     console.log('x ' + x)
+// }
+
+// const array10 = ['pigs', 'goats', 'sheep']; //since this is a mutated array method(meaning that the original array has to be modified, not create a new array) I have to declare a new array with a different name but same values as the example
+
+// console.log(array10.push('cows'))
+// console.log(array10.push('chickens', 'cats', 'dogs'))
+
+
+
+// Expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
+console.clear()
+const array10 = ['pigs', 'goats', 'sheep']; 
+console.log('here',Array.prototype.push)
+Array.prototype.push = undefined
+
+Array.prototype.push = function(x, ){
+  this[this.length] = x;
+  return this;
+}
+
+
+
+
+/////////////////////////////////////
+// 11) pop method
+
+
+/////////////////////////////////////
+// 12) splice method
+

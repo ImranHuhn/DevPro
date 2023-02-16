@@ -514,7 +514,7 @@ Array.prototype.push = function() {
 };
 
 console.log(array10.push('cows'))
-console.log(array10.push('chickens', 'cats', 'dogs'))
+console.log(array10.push('chickens', 'cats', 'dogs'));
 
 // Source that helped: 
 // https://stackoverflow.com/questions/572604/how-can-i-extend-array-prototype-push
@@ -527,3 +527,23 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 /////////////////////////////////////
 // 12) splice method
 
+Array.prototype.splice = undefined;
+Array.prototype.splice = function(start, del) {
+    for(let i = 0; i < this.length; i++){
+        if(this[i] == start){
+            this.shift(this[i] + del)
+            console.log(this)
+        }
+    } 
+}
+
+const months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// Inserts at index 1
+console.log(months);
+// Expected output: Array ["Jan", "Feb", "March", "April", "June"]
+
+months.splice(4, 1, 'May');
+// Replaces 1 element at index 4
+console.log(months);
+// Expected output: Array ["Jan", "Feb", "March", "April", "May"]

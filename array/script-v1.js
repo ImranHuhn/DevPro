@@ -577,11 +577,10 @@ Array.prototype.splice = undefined
 console.log(Array.prototype.splice)
 
 Array.prototype.splice = function(start, deleteCount){
-    for(let i = start; i < this.length; i++){
-        if(deleteCount > 0){
-            delete this[i] 
-        }
-        delete this[i]
+    for(let i = start; i < deleteCount.length; i++){
+        this.shift()
+        this.push(arguments)
+        return this
     }
 }
 

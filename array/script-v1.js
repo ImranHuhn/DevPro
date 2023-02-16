@@ -516,6 +516,10 @@ Array.prototype.push = function() {
 console.log(array10.push('cows'))
 console.log(array10.push('chickens', 'cats', 'dogs'))
 
+// Source that helped: 
+// https://stackoverflow.com/questions/572604/how-can-i-extend-array-prototype-push
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+
 /////////////////////////////////////
 // 11) pop method
 

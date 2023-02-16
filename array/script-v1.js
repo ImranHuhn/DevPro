@@ -493,7 +493,7 @@ Array.prototype.push = undefined
 console.log(Array.prototype.push)
 
 
-const array10 = ['pigs', 'goats', 'sheep']; //since this is a mutated array method(meaning that the original array has to be modified, not create a new array) I have to declare a new array with a different name but same values as the example
+let array10 = ['pigs', 'goats', 'sheep']; //since this is a mutated array method(meaning that the original array has to be modified, not create a new array) I have to declare a new array with a different name but same values as the example
 
 // Array.prototype.push = function(x){
 //     let argArrIndex = 0
@@ -501,16 +501,20 @@ const array10 = ['pigs', 'goats', 'sheep']; //since this is a mutated array meth
 //     console.log('this.length: ' + this.length)
 //     console.log('x ' + x)
 // }
-Array.prototype.push = function(x, ){ // findout about arguments keyword
-  this[this.length] = x;
-  return this;
-}
+// Array.prototype.push = function(x, arguments){ // findout about arguments keyword
+//     this[this.length] = x;
+//     return this
+// }
+
+Array.prototype.push = function() {
+    for( let i = 0; i < arguments.length; i++ ){
+        this[this.length] = arguments[i]; // 'argument' is a keyword used to take any amount of arguments if it is not known or specified
+    } 
+    return this;
+};
 
 console.log(array10.push('cows'))
 console.log(array10.push('chickens', 'cats', 'dogs'))
-
-// zoom call vid 17:05
-
 
 /////////////////////////////////////
 // 11) pop method

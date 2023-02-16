@@ -69,6 +69,7 @@ Array.prototype.push
 Array.prototype.pop
 Array.prototype.splice
 
+console.log('map method section==================================================')
 
 ///////////////////////////////////
 // 1) map method
@@ -104,7 +105,7 @@ console.log(array1.map(x => x)) // first test for new method
 console.log('second test for NEW map method')
 console.log(array1.map(x => x * 2)) //second test for new method
 
-console.log('==================================================')
+console.log('reduce method section==================================================')
 /////////////////////////////////////
 // 2) reduce method
 
@@ -186,7 +187,7 @@ console.log(Array.prototype.reduce) //check if prototype indeed doesn't exist
 // }
 // console.log(array2.reduce(x => x))
 // console.log(array2.reduce(x => x * 2))
-// console.log('===================================================')
+
 
 //////////////////////////////////
 // array2 = [1,2,3,4]
@@ -241,6 +242,8 @@ console.log(array2.reduce((a, b) => { return a + b }))
 
 //note: stackoverflow post is wrong. initialValue and accumilation is switched. the output is suppose to be accumilation according to mdn. another thing is the index is suppose to start at index 1 if initiual value is not given when function is being called
 
+console.log('indexOf method section==================================================')
+
 /////////////////////////////////////
 // 3) indexOf method
 
@@ -284,7 +287,7 @@ Array.prototype.indexOf = function (x, y) {
 console.log(array3.indexOf('bison'));
 console.log(array3.indexOf('bison', 2));
 console.log(array3.indexOf('giraffe'));
-console.log('==================================================')
+console.log('filter method section==================================================')
 
 /////////////////////////////////////
 // 4) filter method
@@ -313,7 +316,7 @@ Array.prototype.filter = function (callback) {
 }
 
 console.log(array4.filter(word => word.length > 6))
-console.log('==================================================')
+console.log('concat method section==================================================')
 /////////////////////////////////////
 // 5) concat method
 
@@ -338,21 +341,21 @@ Array.prototype.concat = function(x){
 }
 
 console.log(array5a.concat(array5b))
-console.log('==================================================')
+console.log('every method section==================================================')
 
 
 /////////////////////////////////////
 // 6) every method
 
 const isBelowThreshold = (currentValue) => currentValue < 40;
-const isBelowThreshold1 = (currentValue) => currentValue > 40;
+const falseIsBelowThreshold = (currentValue) => currentValue > 40;
 
 const array6 = [1, 30, 39, 29, 10, 13];
 
 console.log(array6.every(isBelowThreshold));
 // Expected output: true
 
-console.log(array6.every(isBelowThreshold1));
+console.log(array6.every(falseIsBelowThreshold));
 // Expected output: false
 
 console.log(Array.prototype.every)
@@ -370,8 +373,8 @@ Array.prototype.every = function(callback){
 }
 
 console.log(array6.every(isBelowThreshold));
-console.log(array6.every(isBelowThreshold1));
-console.log('==================================================')
+console.log(array6.every(falseIsBelowThreshold));
+console.log('forEach method section==================================================')
 
 
 /////////////////////////////////////
@@ -399,7 +402,7 @@ Array.prototype.forEach = function(callback){
 array7.forEach(element => console.log(element));
 
 
-console.log('==================================================')
+console.log('lastIndexOf method section==================================================')
 
 
 /////////////////////////////////////
@@ -433,44 +436,44 @@ Array.prototype.lastIndexOf = function(x){
 console.log(array8.lastIndexOf('Dodo'));
 console.log(array8.lastIndexOf('Tiger'));
 console.log(array8.lastIndexOf('Dog'));
-console.log('==================================================')
+console.log('some method section==================================================')
 
 
 /////////////////////////////////////
 // 9) some method
 
-// const array9 = [1, 2, 3, 4, 5];
+const array9 = [1, 2, 3, 4, 5];
 
-// // Checks whether an element is even
-// const even = (element) => element % 2 === 0;
-// const odd = (element) => element % 3 === 0 || 1;
-// const ten = (element) => element === 10;
+// Checks whether an element is even
+const even = (element) => element % 2 === 0;
+const odd = (element) => element % 3 === 0 || 1;
+const ten = (element) => element === 10;
 
-// console.log(array9.some(even));
-// // Expected output: true
+console.log(array9.some(even));
+// Expected output: true
 
-// console.log(array9.some(odd));
-// // Expected output: true
+console.log(array9.some(odd));
+// Expected output: true
 
-// console.log(array9.some(ten));
-// // Expected output: false
+console.log(array9.some(ten));
+// Expected output: false
 
-// console.log(Array.prototype.some)
-// Array.prototype.some = undefined
-// console.log(Array.prototype.some)
+console.log(Array.prototype.some)
+Array.prototype.some = undefined
+console.log(Array.prototype.some)
 
-// Array.prototype.some = function(callback){
-//     for(let i = 0; i < this.length; i++){
-//         if(callback(this[i])){
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-// console.log(array9.some(even));
-// console.log(array9.some(odd));
-// console.log(array9.some(ten));
-// console.log('==================================================')
+Array.prototype.some = function(callback){
+    for(let i = 0; i < this.length; i++){
+        if(callback(this[i])){
+            return true;
+        }
+    }
+    return false;
+}
+console.log(array9.some(even));
+console.log(array9.some(odd));
+console.log(array9.some(ten));
+console.log('push method section==================================================')
 
 
 // /////////////////////////////////////
@@ -520,10 +523,67 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 // https://stackoverflow.com/questions/572604/how-can-i-extend-array-prototype-push
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
 
+console.log('pop method section==================================================')
+
 /////////////////////////////////////
 // 11) pop method
 
+const array11 = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
+console.log(array11.pop());
+// Expected output: "tomato"
+
+console.log(array11);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+
+array11.pop();
+
+console.log(array11);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage"]
+
+console.log(Array.prototype.pop)
+Array.prototype.pop = undefined
+console.log(Array.prototype.pop)
+
+Array.prototype.pop = function(){
+    const x = this[this.length - 1]
+    this.splice(this.length - 1, 1)
+    return x;
+}
+
+const array11test = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+console.log(array11test);
+console.log(array11test.pop());
+console.log(array11test);
+
+console.log('splice method section==================================================')
 /////////////////////////////////////
 // 12) splice method
 
+const array12 = ['Jan', 'March', 'April', 'June'];
+array12.splice(1, 0, 'Feb');
+// Inserts at index 1
+console.log(array12);
+// Expected output: Array ["Jan", "Feb", "March", "April", "June"]
+
+array12.splice(4, 1, 'May');
+// Replaces 1 element at index 4
+console.log(array12);
+// Expected output: Array ["Jan", "Feb", "March", "April", "May"]
+
+console.log(Array.prototype.splice)
+Array.prototype.splice = undefined
+console.log(Array.prototype.splice)
+
+Array.prototype.splice = function(start, deleteCount){
+    for(let i = start; i < this.length; i++){
+        if(deleteCount > 0){
+            delete this[i] 
+        }
+        delete this[i]
+    }
+}
+
+console.log(array12.splice(1, 0, 'Feb'));
+console.log(array12.splice(4, 1, 'May'));

@@ -16,11 +16,10 @@
 
 Array.prototype.splice = undefined;
 Array.prototype.splice = function(start, del, ...args) {
-    console.log(args.length)
-    for(let i = start; i <= start + del; i++){
-        if(del > 0){
-            this[start] = args[0]
-            this.copyWithin()
+    for(let i = start; i < start + del; i++){
+        if(del || args > 0){
+            delete this[i]
+            this[i] = args
         } else {   // if del <= 0         
             this.length++ //modify array's space
             this.copyWithin(start + 1, start) // move values to the right
@@ -31,12 +30,44 @@ Array.prototype.splice = function(start, del, ...args) {
 
 const testArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
+console.log(testArr)
+
+testArr.splice(12,2,'x','y','z')
 
 console.log(testArr)
 
-testArr.splice(2,2,'x','y','z')
+// based on mdn
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+// https://tc39.es/ecma262/#sec-array.prototype.splice
+// start
+    // if start < 0
+        // start + array.length if used
+    // if start < -array.length || start is omitted
+        // 0 is used
+    // if start >= array.length
+        // no element is deleted but will behave as adding function. adding as many elements given
 
-console.log(testArr)
+// del
+    // if del is omitted || del >= this.length
+        // then all elements after start is deleted || pass "infinity" to pass itemN
+    // if del <= 0
+        // then no elements are removed
+
+// Array.prototype.splice = function(start, del, ...args) {
+//     if(start < 0){
+//         start += this.length
+//     } else if(start < -this.length || start == undefined){
+//         start = 0
+//     } else { // if(start >= array.length)
+//         this.length++
+//         this.copyWithin(start + 1, start)
+//         this[start] = args
+//     }
+// }
+
+
+
+
 
 //if del = 0 then extend length and add item
 

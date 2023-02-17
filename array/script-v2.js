@@ -225,7 +225,36 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 /////////////////////////////////////
 // 11) pop method section
 
-console.log('11) pop method section==================================================')
+const array11 = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+console.log(array11.pop());
+// Expected output: "tomato"
+
+console.log(array11);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+
+array11.pop();
+
+console.log(array11);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage"]
+
+console.log(Array.prototype.pop)
+Array.prototype.pop = undefined
+console.log(Array.prototype.pop)
+
+Array.prototype.pop = function(){
+    const x = this[this.length - 1]
+    this.splice(this.length - 1, 1)
+    return x;
+}
+
+const array11test = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+console.log(array11test);
+console.log(array11test.pop());
+console.log(array11test);
+
+console.log('splice method section==================================================')
 
 
 /////////////////////////////////////

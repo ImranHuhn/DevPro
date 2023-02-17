@@ -228,15 +228,12 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 const array11 = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
 console.log(array11.pop());
-// Expected output: "tomato"
 
 console.log(array11);
-// Expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
 
 array11.pop();
 
 console.log(array11);
-// Expected output: Array ["broccoli", "cauliflower", "cabbage"]
 
 console.log(Array.prototype.pop)
 Array.prototype.pop = undefined
@@ -262,3 +259,24 @@ console.log('splice method section==============================================
 
 console.log('12) splice method section==================================================')
 
+Array.prototype.splice = undefined;
+console.clear()
+
+Array.prototype.splice = function(start, del, ...items) {
+  const startArray = [];
+
+  for(let i = 0; i< start; i++){
+    startArray.push(this[i])
+  }
+  startArray.push(...items);
+
+  for(let i = start+del; i< this.length; i++){
+    startArray.push(this[i]);
+  }
+  
+  return startArray
+}
+
+const newTestArr = ['Jan', 'March', 'April', 'June']
+
+console.log(newTestArr.splice(1, 0, 'Feb', 'dog'))

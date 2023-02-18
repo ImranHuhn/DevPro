@@ -362,6 +362,7 @@ console.log(Array.prototype.every)
 Array.prototype.every = undefined
 console.log(Array.prototype.every)
 
+// similar to some() but opposite. in this case we care if something doesnt exist which means that we iterate through each to make sure it is false
 Array.prototype.every = function(callback){
     for(let i = 0; i < this.length; i++){
         if(callback(this[i])){
@@ -462,6 +463,7 @@ console.log(Array.prototype.some)
 Array.prototype.some = undefined
 console.log(Array.prototype.some)
 
+// similar to every() but opposite. in this case we care if something exist which means it is not necessary to iterate through all array when we find that thing that exist
 Array.prototype.some = function(callback){
     for(let i = 0; i < this.length; i++){
         if(callback(this[i])){

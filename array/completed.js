@@ -14,10 +14,7 @@ Array.prototype.map = function (callback) {
     return newArray;
 }
 
-console.log('first test for NEW map method')
 console.log(array1.map(x => x))
-
-console.log('second test for NEW map method')
 console.log(array1.map(x => x * 2))
 
 /////////////////////////////////////
@@ -28,8 +25,8 @@ Array.prototype.reduce = undefined;
 
 let array2 = [1, 2, 3, 4]
 
-Array.prototype.reduce = function (callback) {
-    let acc = this[0]
+Array.prototype.reduce = function (callback, initialAcc) {
+    let acc = initialAcc || this[0]
     for (let i = 1; i < this.length; i++) {
         acc = callback(acc, this[i])
     }
@@ -38,11 +35,10 @@ Array.prototype.reduce = function (callback) {
 
 console.log(array2.reduce(x => x));
 console.log(array2.reduce(x => x * 2));
-console.log(array2.reduce((a, b) => { return a + b }))
+console.log(array2.reduce((a, b) => { return a + b }, 79))
 
 /////////////////////////////////////
 // 3) indexOf method section
-
 console.log('3) indexOf method section==================================================')
 
 Array.prototype.indexOf = undefined;
@@ -50,17 +46,11 @@ Array.prototype.indexOf = undefined;
 const array3 = ['ant', 'bison', 'camel', 'duck', 'bison'];
 
 Array.prototype.indexOf = function (x, y) {
-    if (y == undefined) {
-        for (let i = 0; i < this.length; i++) {
-            if (x === this[i]) {
-                return i;
-            }
-        }
-    } else if (y != undefined) {
-        for (let i = y; i < this.length; i++) {
-            if (x === this[i]) {
-                return i;
-            }
+    const start = y || 0
+    
+    for (let i = start; i < this.length; i++) {
+        if (x === this[i]) {
+            return i;
         }
     }
     return -1; 
@@ -72,7 +62,6 @@ console.log(array3.indexOf('giraffe'));
 
 /////////////////////////////////////
 // 4) filter method section
-
 console.log('4) filter method section==================================================')
 
 Array.prototype.filter = undefined
@@ -84,38 +73,42 @@ Array.prototype.filter = function (callback) {
     for (let i = 0; i < this.length; i++) {
         if (callback(this[i])){
             newArr.push(this[i])
-            console.log(newArr)
         }
     }
     return newArr;
 }
 
 console.log(array4.filter(word => word.length > 6))
+
 /////////////////////////////////////
 // 5) concat method section
-
 console.log('5) concat method section==================================================')
 
 Array.prototype.concat = undefined
 
-
-Array.prototype.concat = function(x){
-    let newArr = []
-    newArr.push(this)
-    for(let i = 0; i < x.length; i++){
-        newArr[0].push(x[i]);
+Array.prototype.concat = function(x, ...args){
+    let newArr = [];
+    console.log(...args)
+    for(let i = 0; i < this.length; i++){
+        newArr.push(this[i]);
     }
-    return newArr[0]
+
+    for(let i = 0; i < x.length; i++){
+        newArr.push(x[i]);
+    }
+    for(let i = 0; i < args.length; i++){
+        newArr.push(args[i]);
+    }
+    return newArr;
 }
 
 const array5a = ['a', 'b', 'c'];
 const array5b = ['d', 'e', 'f'];
-const array5c = array5a.concat(array5b);
-console.log(array5a.concat(array5b))
+const array5c = array5a.concat(array5b, 'z');
+console.log(array5c)
 
 /////////////////////////////////////
 // 6) every method section
-
 console.log('6) every method section==================================================')
 
 Array.prototype.every = undefined
@@ -127,12 +120,11 @@ const falseIsBelowThreshold = (currentValue) => currentValue > 40;
 
 Array.prototype.every = function(callback){
     for(let i = 0; i < this.length; i++){
-        if(callback(this[i])){
-            return true;
-        } else {
+        if(!callback(this[i])){
             return false;
         }
     }
+    return true;
 }
 
 console.log(array6.every(isBelowThreshold));
@@ -140,7 +132,6 @@ console.log(array6.every(falseIsBelowThreshold));
 
 /////////////////////////////////////
 // 7) forEach method section
-
 console.log('7) forEach method section==================================================')
 
 Array.prototype.forEach = undefined
@@ -148,18 +139,15 @@ Array.prototype.forEach = undefined
 const array7 = ['a', 'b', 'c'];
 
 Array.prototype.forEach = function(callback){
-    newArr = [];
     for(let i = 0; i < this.length; i++){
-        newArr += callback(this[i])
+        callback(this[i])
     }
-    return newArr;
 }
 
 array7.forEach(element => console.log(element));
 
 /////////////////////////////////////
 // 8) lastIndexOf method section
-
 console.log('8) lastIndexOf method section==================================================')
 
 Array.prototype.lastIndexOf = undefined
@@ -168,7 +156,6 @@ const array8 = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
 
 Array.prototype.lastIndexOf = function(x){
     for(let i = this.length - 1; i >= 0; i--){
-        // console.log(x + ' : ' + this[i] )
         if(x == this[i]){
             return i;
         }
@@ -182,7 +169,6 @@ console.log(array8.lastIndexOf('Dog'));
 
 /////////////////////////////////////
 // 9) some method section
-
 console.log('9) some method section==================================================')
 
 Array.prototype.some = undefined
@@ -207,7 +193,6 @@ console.log(array9.some(ten));
 
 // /////////////////////////////////////
 // // 10) push method section
-
 console.log('10) push method section==================================================')
 
 Array.prototype.push = undefined
@@ -224,20 +209,11 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 
 /////////////////////////////////////
 // 11) pop method section
+console.log('11) pop method section==================================================')
 
 const array11 = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
-console.log(array11.pop());
-
-console.log(array11);
-
-array11.pop();
-
-console.log(array11);
-
-console.log(Array.prototype.pop)
 Array.prototype.pop = undefined
-console.log(Array.prototype.pop)
 
 Array.prototype.pop = function(){
     const x = this[this.length - 1]
@@ -245,22 +221,14 @@ Array.prototype.pop = function(){
     return x;
 }
 
-const array11test = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
-
-console.log(array11test);
-console.log(array11test.pop());
-console.log(array11test);
-
-console.log('splice method section==================================================')
-
+console.log(array11.pop());
+console.log(array11);
 
 /////////////////////////////////////
 // 12) splice method section
-
 console.log('12) splice method section==================================================')
 
 Array.prototype.splice = undefined;
-console.clear()
 
 Array.prototype.splice = function(start, del, ...items) {
   const startArray = [];

@@ -1,0 +1,56 @@
+body {
+    background-color: #007575;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    height: 60%;
+}
+
+.path {
+    background-color: black;
+    height: 110px;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.box {
+    background-color: red;
+    border-radius: 10px;
+    height: 100px;
+    left: 0;
+    margin: 5px;
+    position: absolute;
+    width: 100px;
+    transition: background 2s linear, left 2s linear;
+}
+
+.white {
+    background-color: white;
+}
+
+.right {
+    background-color: blue;
+    left: calc(100% - 110px);
+}
+
+button {
+    background-color: #007575;
+    border-radius: 10px;
+    border-width: 3px;
+    color: white;
+    display: block;
+    height: 40px;
+    margin: 0 auto;
+    transition: background-color .2s ease-in-out, black .2s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}

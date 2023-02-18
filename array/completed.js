@@ -86,15 +86,11 @@ console.log('5) concat method section===========================================
 
 Array.prototype.concat = undefined
 
-Array.prototype.concat = function(x, ...args){
+Array.prototype.concat = function(...args){
     let newArr = [];
     console.log(...args)
     for(let i = 0; i < this.length; i++){
         newArr.push(this[i]);
-    }
-
-    for(let i = 0; i < x.length; i++){
-        newArr.push(x[i]);
     }
     for(let i = 0; i < args.length; i++){
         newArr.push(args[i]);

@@ -1,0 +1,29 @@
+body {
+    background-color:black;
+    margin: 0;
+}
+
+h1 {
+    color: white;
+    position: absolute;
+    left: 20px
+}
+
+.container {
+    align-items: center;
+    display: flex; 
+    height: 100vh;
+}
+
+.ruler {
+    background-color:antiquewhite;
+    height: 100px;
+    width: 100vw
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+}

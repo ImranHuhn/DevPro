@@ -1,6 +1,12 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     background-color: black;
     margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .main-container {
@@ -9,54 +15,110 @@ body {
 
 h1 {
     color: white;
-    text-align: center;
+    text-align: right;
+}
+
+.left {
+    position: relative;
+}
+
+.left__dropdown {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    width: 10rem;
+}
+
+.left__dropdown li {
+    background-color: white;
+    color: red;
+    text-align: left;
+    list-style: none;
+    padding: 25px 15px;
+    display: none;
+    font-weight: bolder;
+}
+
+.left__selected-name {
+    padding: 25px 25px 25px 0;
+    cursor: pointer;
+    color: white;
+}
+
+.hover {
+    position: absolute;
+    width: 10rem;
+    height: 80px;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.image {
+    width: 100%;
+}
+
+.hover:hover .left__dropdown li {
+    display: block !important;
+}
+
+.left {
+    width: 100%;
+}
+
+.left__dropdown li:nth-child(2) {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.left__dropdown li:hover {
+    background-color: lightgray;
 }
 
 .right {
     width: 100%;
     min-width: 500px;
     position: relative;
+    margin-left: 40px;
 }
 
 .right__container {
     position: absolute;
-    max-width: 50rem;
-    width: 100%;
-    /* margin: 0 auto; */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 2rem;
+    left: 0;
 }
 
 .right__white-background {
-    width: 45vw;
-    height: 70vh;
+    width: 40rem;
     background-color: white;
     border-radius: 5px;   
-    margin: 40px; 
+    margin-top: 40px; 
 }
 
 .right__quote {
     color: red;
     margin: 0 40px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     font-size: 30px;
     max-height: 400px;
-    height: 220px;
 }
 
-span {
+.quote-marks {
     color: black;
     font-size: 80px;
 }
 
-span:nth-child(3){
+.quote-marks-right {
     margin-left: 90%;
 }
 
 button {
     display: block;
     margin: 20px auto 0;
+    color: red;
+    font-weight: bolder;
+    font-size: 24px;
+    cursor: pointer;
 }
 

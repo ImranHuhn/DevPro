@@ -10,19 +10,30 @@
 <body>
     <main class="main-container">
         <section class="left">
-            <h1>Random Quotes by Jim Rohn</h1>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Jim_rohn.jpg" alt="jim-rohn">
+            <h1 class="left__title">Random Quotes by
+                <span class="left__selected-name current-name">
+                Jim Rohn
+                </span>
+            </h1>
+            <div class="hover">
+                <ul class="left__dropdown select-names">
+                    <li>Andrew Tate</li>
+                    <li>Jim Rohn</li>
+                    <li>Voltaire</li>
+                </ul>
+            </div>
+            <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Jim_rohn.jpg" alt="jim-rohn">
         </section>
         <section class="right">
             <div class="right__container">
+                <button class="button">NEW QUOTE</button>
                 <div class="right__white-background">
-                    <span>"</span>
+                    <span class="quote-marks">"</span>
                     <p class="right__quote">
                         Click "NEW QUOTE" button.
                     </p>
-                    <span>"</span>
+                    <span class="quote-marks quote-marks-right">"</span>
                 </div>
-                <button class="button">NEW QUOTE</button>
             </div>
         </section>
     </main>

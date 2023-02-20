@@ -40,9 +40,10 @@ h1 {
 }
 
 .left__selected-name {
-    padding: 25px 25px 25px 0;
+    padding: 25px;
     cursor: pointer;
-    color: white;
+    color: red;
+    background-color: white;
 }
 
 .hover {

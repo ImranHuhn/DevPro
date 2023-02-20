@@ -1,6 +1,6 @@
 const quoteObj = [
     {
-        name: 'Andrew Tate (Top-G)',
+        name: 'Andrew Tate',
         image: 'https://images.complex.com/complex/images/c_fill,f_auto,g_center,w_1200/fl_lossy,pg_1/pxzr4hqfklhsuhfda55w/andrew-tate',
         quotes: [
             'My unmatched perspicacity, coupled with sheer indefatigability, makes me a feared opponent in any realm of human endeavor.',
@@ -33,7 +33,7 @@ const quoteObj = [
         ]
     }, 
     {
-        name: 'Voltaire (Francois-Marie Arouet)',
+        name: 'Voltaire',
         image: 'https://www.onthisday.com/images/articles/voltaire.jpg',
         quotes: [
             'Common sense is not so common.',
@@ -78,8 +78,16 @@ window.addEventListener('load', () => {
     randomQuote(state);
 });
 
+quoteObj.forEach(obj => {
+    selNames.innerHTML += 
+    `<li>${obj.name}</li>`
+});
+
 selNames.addEventListener('click', (e) => {
     const y = e.target.innerText;
+
+    console.log(e.target.innerText)
+
     switch(y) {
         case 'Andrew Tate':
             state = 0;

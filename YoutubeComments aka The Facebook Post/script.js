@@ -1,32 +1,32 @@
 const youtubeComments = {
     video : {
         title: 'How to get a remote developer job (2023)',
-        channelPic: '',
+        channelPic: 'https://yt3.ggpht.com/09I-3iGSMul_r1dikSY3sZbobXLw8qpGkGgCeicJiZYxc4daaufZb9GkmunrU6Iw6x9NpgudXw=s48-c-k-c0x00ffffff-no-rj',
         channel: 'Developer Pro',
         subscribers: '5.2K subscribers'
     },
     meta : {
         views: '568 views',
         time: '1 day ago',
-      description: {
-          tags: ['#softwaredeveloper', '#webdeveloper', 'frontenddeveloper'],
-        text: ' Land your first 80k/year remote developer job',
-        totalComments: '29 Comments'
+        description: {
+            tags: ['#softwaredeveloper', '#webdeveloper', 'frontenddeveloper'],
+            text: ' Land your first 80k/year remote developer job',
+            totalComments: '29 Comments'
       }
       
     },
     comments : [
         {
             user : {
-                profilePic: '',
+                profilePic: 'https://yt3.ggpht.com/09I-3iGSMul_r1dikSY3sZbobXLw8qpGkGgCeicJiZYxc4daaufZb9GkmunrU6Iw6x9NpgudXw=s48-c-k-c0x00ffffff-no-rj',
                 name: 'Developer Pro',
                
             },
-          stats: {
-            thumbsUp: 3,
+            stats: {
+                thumbsUp: 3,
                 thumbsDown: 0,
-            time: '1 day ago',
-          },
+                time: '1 day ago',
+            },
            
                 comment: 'Land your first 80k/year remote developer job',
                 

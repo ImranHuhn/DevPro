@@ -60,9 +60,6 @@ let state = 0;
 
 function randomQuote(changeQuote) {
     quote.innerHTML = quoteObj[changeQuote].quotes[Math.ceil(Math.random() * quoteObj[changeQuote].quotes.length - 1)];
-
-    currentImage(changeQuote);
-    currentName(quoteObj[changeQuote].name);
 }
 
 function currentName(changeName) {
@@ -74,7 +71,7 @@ function currentImage(changeImage) {
 }
 
 window.addEventListener('load', () => {
-    state = Math.ceil(Math.random() * quoteObj.length - 1);
+    state = 1;
     randomQuote(state);
 });
 
@@ -83,15 +80,23 @@ selNames.addEventListener('click', (e) => {
     switch(y) {
         case 'Andrew Tate':
             state = 0;
-            break;
+            currentName(y)
+            randomQuote(state);
+            currentImage(state);
+            return;
         case 'Jim Rohn':
             state = 1;
-            break;
+            currentName(y)
+            randomQuote(state);
+            currentImage(state);
+            return;
         case 'Voltaire':
             state = 2;
-            break;
+            currentName(y)
+            randomQuote(state);
+            currentImage(state);
+            return;
     }
-    randomQuote(state);
 });
 
 button.addEventListener('click', () => {

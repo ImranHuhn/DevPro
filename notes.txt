@@ -1,0 +1,13 @@
+data structures:
+
+[ {a:b}, {c:d}, {e:f} ]
+
+{ x:{a:b}, y:{c:d}, z:{e:f} }
+
+{ x:[a,b,c], y:[d,e,f], z:[h,i,j] }
+
+{ x:{a:b}, y:c, z:[d,e,f] }
+
+-items inside an object must have a key / value pair. there has to be a name or label associated to each object item
+-in arrays, order matters and categroical grouping doesn't. in objects, order doesn't matter, but most common categrotical grouping matters.
+=================================================================================================================================

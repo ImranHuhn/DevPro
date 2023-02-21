@@ -1,6 +1,6 @@
-const text = document.querySelector('.text-wrapper');
+const text = document.getElementById('text')
 
-document.addEventListener('keypress', (e) => {
-    
-    console.log()
+document.addEventListener('keydown', (e) => {
+    text.innerText += e.key;
+    console.log(e.key)
 });

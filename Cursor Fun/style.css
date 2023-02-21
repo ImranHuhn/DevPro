@@ -16,6 +16,11 @@ h1 {
     z-index: 10;
 }
 
+span {
+    font-size: 36px;
+    color: red;
+}
+
 .outer-circle {
     width: 31px;
     height: 31px;
@@ -44,4 +49,11 @@ h1 {
     position: absolute;
     transform: translate(-150%, -150%);
     z-index: 100;
+}
+
+#fox {
+    color: white;
+    position: absolute;
+    z-index: 1000;
+    padding: 10px;
 }

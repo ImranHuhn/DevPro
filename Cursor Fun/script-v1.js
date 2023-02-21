@@ -14,31 +14,42 @@ const followMouse = (e) => {
     middle.style.left =  x;
 
     outer.style.top = y;
-    outer.style.left = x;   
+    outer.style.left = x;
+    
+    // console.log('inner: ' + inner.style.left + ' ' + inner.style.top);
+    // console.log('middle: ' + middle.style.left + ' ' + middle.style.top);
+    // console.log('outer: ' + outer.style.left + ' ' + outer.style.top);
+    // console.log('triggered');
+    // console.log(e);
 }
 
-const wildFox = () => {
+window.addEventListener('mousemove', followMouse);
+
+
+
+///////////////////////////////////
+function wildFox() {
     let width = Math.floor(Math.random() * window.innerWidth);
     let height = Math.floor(Math.random() * window.innerHeight);
 
     fox.style.top = height + 'px';
     fox.style.left  = width + 'px';
-}
 
-const hit = () => {
+}
+// console.log(Math.floor(Math.random() * window.innerWidth))
+
+window.addEventListener('load', () => {
+    wildFox()
+});
+const interval = setInterval(() => {
+    wildFox();
+}, 1000)
+
+fox.addEventListener('click', () => {
     console.log('hit');
     fox.style.color = 'red';
     fox.style.fontWeight = 'bolder';
     fox.style.fontSize = '24px';
     fox.innerHTML = `HIT`;
     clearInterval(interval);
-}
-
-const interval = setInterval(() => {
-    wildFox();
-}, 1000)
-
-window.addEventListener('mousemove', followMouse);
-window.addEventListener('load',wildFox);
-fox.addEventListener('click', hit)
-
+})

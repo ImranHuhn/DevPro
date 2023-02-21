@@ -10,4 +10,5 @@ data structures:
 
 -items inside an object must have a key / value pair. there has to be a name or label associated to each object item
 -in arrays, order matters and categroical grouping doesn't. in objects, order doesn't matter, but most common categrotical grouping matters.
+-if there's multiple repeatable data, use array. why, because if there are multiple objects of the same structure of data, the one below will override the previous data.
 =================================================================================================================================

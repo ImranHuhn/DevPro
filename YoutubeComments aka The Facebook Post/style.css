@@ -183,6 +183,7 @@ h1, h2, h3, h4, h5, p, a, img, i, button {
 
 .comment-display__post-header h5 {
     margin: auto 5px;
+    color: gray;
 }
 
 .comment-display__post-body {

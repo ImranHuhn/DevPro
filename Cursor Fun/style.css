@@ -1,6 +1,25 @@
 body {
     background-color: black;
     position: relative;
+    overflow: hidden;
+}
+
+button {
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: white;
+    font-size: 40px;
+    border-color: white;
+    display: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.display {
+    display:block;
 }
 
 h1 {

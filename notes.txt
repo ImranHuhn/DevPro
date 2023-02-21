@@ -1,3 +1,10 @@
+good practice:
+-use === over ==
+-use const over let
+
+
+======================================
+
 data structures. Arrays and Objects:
 
 [ {a:b}, {c:d}, {e:f} ]
@@ -28,7 +35,7 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
     -execution context creates 4 things
         1) global object(which is 'window' aka browser)
         2) this (which is just the global object but in a variable called this)
-        3) outer environment (at the global level, this is just just null because there's  nothing outside. at a function level, the outside environment is the global object. or a function inside a function, the outer environment is the parent/outer function)
+        3) outer environment (at the global level, this is just null because there's  nothing outside. at a function level, the outside environment is the global object. or a function inside a function, the outer environment is the parent/outer function)
         4) current/executed/running code (the function/code block that's running)
 
 -object
@@ -37,5 +44,69 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
 -global
     -just means, not inside a function/code block
 
+-variable
+    -initialize means variable with value
+    -declaration means variable with NO value
 
-video time 36:38
+-hoisting
+    -for functions, javascript is able to execute/call functions before the function black itself
+    -for variables, javascript is able to declare a variable with a value but cannot initialize item
+    -functions are stored in memory by entirety/as whole including code block inside while variables are initialized with a placeholder called "undefined". variables get initialized with a value during the execution of the code, line by line.
+    -javascript first goes through the creation phase, then execution phase. all variables are first initialized with undefined in the creation phase and all functions are created as a whole including the code block inside
+    -the reason for this hoisting behavior is because before executing/running the code line by line, javascript first stores the variables and functions in memory. once executed line by line, javascript can retreive the variables and functions.
+
+-undefined vs not defined
+    -undefined means variable is declared and saved in memory but has no value
+    -not defined means the variable doesn't exist in memory because it was never created/declared
+
+-execution stack
+    -execution stack are a collection of execution context(function calls) in the order in which they were executed, starting from bottom to top
+    -basically a group of functions that are still running or tasks that have not yet been completed
+
+-javascript phases
+    -phase 1 is creation phase which saves stuff in memory. saves lines that start with creation phase keywords like "function", "const", "let", and "var" in physical memory.
+    -phase 2 is execution phase which takes actionable steps line by line. executes code that does not start with creation phase keywords
+        -in the execution phase, an "execution context" gets created 
+        -when there's a line where a function gets called/invoked, that function gets added to the execution stack. if another function gets called, it gets added on top of the previous function and samething for the next function.
+        all execution phases starts with a global execution context. then when a function is called, that function(aka execution conext) gets stacked on top of the global execution context. then the next function(aka execution conext) gets stacked on top of the previous function(aka execution context) coninuously until each function's tasks are completed
+        -the top execution context in an execution stack does not have access to the variables in the execution context below it. in other words, the top execution context is the top function of the bottom function, so the top function doesnt have access to the bottom function but the bottom function has access to the top function
+
+-single threaded
+    -one command at a time in javascript
+
+-synchronous execution
+    -one command at a time in order in javascript
+
+-invocation
+    -running a function. functions are invoked using  parenthesis "()"
+
+-create and execute cycle for function
+    -each function calls gets created and executes the code inside it
+
+-variable environments
+    -where variables are located
+    -variables stay within the scope of the function where it was created
+    -each function that was called creates a variable environment where variables gets saved
+
+-scope
+    -scope is where a variable is accessable
+    -within a code block
+    -within an execution context
+    -within a function
+    -within curly brackets { }
+
+-scope vs execution stack
+    -both accesses variables differently
+    - in scope, functions have access to variables outside of the functio(codeblock)
+    -in execution stack, functions that are called don't have access to variables below the stack
+    -execution stack deals with functions that are not nested within each other but called within each other.
+    -scope deals with functions that are nested within each other
+    -executions stack cares about parenthesis "()" and scope cares about curly brackets "{}". in other words, executions stack cares about where function is called and scope cares about where functions are created
+
+-asynchronous
+    -means more than one at a time
+    -javascript operate synchronously, but can execute commands outside of itself to the browser. it is at the browser level where asynchrouns tasks can happen but cannot happen within javascript
+    -asynchronous usually happens with event listeners, data, or callback functions
+
+
+video : 1:40:27

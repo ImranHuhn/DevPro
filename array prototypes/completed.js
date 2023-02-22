@@ -2,6 +2,10 @@
 // 1) map method section
 console.log('1) map method section==================================================')
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+// Syntax
+// map(function (element) { /* … */ })
+
 Array.prototype.map = undefined;
 
 const array1 = [1, 2, 3, 4]
@@ -20,6 +24,10 @@ console.log(array1.map(x => x * 2))
 /////////////////////////////////////
 // 2) reduce method section
 console.log('2) reduce method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+// Syntax
+// reduce(function (accumulator, currentValue) { /* … */ }, initialValue)
 
 Array.prototype.reduce = undefined;
 
@@ -40,6 +48,10 @@ console.log(array2.reduce((a, b) => { return a + b }, 79))
 /////////////////////////////////////
 // 3) indexOf method section
 console.log('3) indexOf method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+// Syntax
+// indexOf(searchElement, fromIndex)
 
 Array.prototype.indexOf = undefined;
 
@@ -64,6 +76,10 @@ console.log(array3.indexOf('giraffe'));
 // 4) filter method section
 console.log('4) filter method section==================================================')
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+// Syntax
+// filter(function (element) { /* … */ })
+
 Array.prototype.filter = undefined
 
 const array4 = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
@@ -83,6 +99,10 @@ console.log(array4.filter(word => word.length > 6))
 /////////////////////////////////////
 // 5) concat method section
 console.log('5) concat method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+// Syntax
+// concat(value0, value1, /* … ,*/ valueN)
 
 Array.prototype.concat = undefined
 
@@ -107,6 +127,10 @@ console.log(array5c)
 // 6) every method section
 console.log('6) every method section==================================================')
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+// Syntax
+// every(function (element) { /* … */ })
+
 Array.prototype.every = undefined
 
 const array6 = [1, 30, 39, 29, 10, 13];
@@ -130,6 +154,10 @@ console.log(array6.every(falseIsBelowThreshold));
 // 7) forEach method section
 console.log('7) forEach method section==================================================')
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+// Syntax
+// forEach(function (element) { /* … */ })
+
 Array.prototype.forEach = undefined
 
 const array7 = ['a', 'b', 'c'];
@@ -145,6 +173,10 @@ array7.forEach(element => console.log(element));
 /////////////////////////////////////
 // 8) lastIndexOf method section
 console.log('8) lastIndexOf method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf
+// Syntax
+// lastIndexOf(searchElement)
 
 Array.prototype.lastIndexOf = undefined
 
@@ -166,6 +198,10 @@ console.log(array8.lastIndexOf('Dog'));
 /////////////////////////////////////
 // 9) some method section
 console.log('9) some method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+// Syntax
+// some(function (element) { /* … */ })
 
 Array.prototype.some = undefined
 
@@ -191,6 +227,10 @@ console.log(array9.some(ten));
 // // 10) push method section
 console.log('10) push method section==================================================')
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+// Syntax
+// push(element0, element1, /* … ,*/ elementN)
+
 Array.prototype.push = undefined
 
 const array10 = ['pigs', 'goats', 'sheep'];
@@ -206,6 +246,10 @@ console.log(array10.push('chickens', 'cats', 'dogs'))
 /////////////////////////////////////
 // 11) pop method section
 console.log('11) pop method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop
+// Syntax
+// pop()
 
 const array11 = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
 
@@ -223,6 +267,10 @@ console.log(array11);
 /////////////////////////////////////
 // 12) splice method section
 console.log('12) splice method section==================================================')
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+// Syntax
+// splice(start, deleteCount, item1, item2, itemN)
 
 Array.prototype.splice = undefined;
 

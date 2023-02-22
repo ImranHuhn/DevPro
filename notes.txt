@@ -1,6 +1,8 @@
 good practice:
--use === over ==
+-use === over == to prevent coercion
+-use !== over != to prevent coercion
 -use const over let
+-use addEventListeners('click', ()=>{}) over .Onclick(){} to prevent overwriting other event listeners
 
 
 ======================================
@@ -108,5 +110,42 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
     -javascript operate synchronously, but can execute commands outside of itself to the browser. it is at the browser level where asynchrouns tasks can happen but cannot happen within javascript
     -asynchronous usually happens with event listeners, data, or callback functions
 
+-event queue
+    -event listeners
+    -when execution stack is finished and empty, javascript looks for any events that was triggered
 
-video : 1:40:27
+-dynamic types
+    -javascript can figure out the type of variables unlike other programs languages like java where you have to explicitly use keyword types for variables
+
+-primitive types in JavaScript 
+    -undefinied
+        -js engines default value when variable is declared. programmers should never initialize a variable as undefined
+    -null
+        -null is the same as undefinied but the programmer initializes it as null. undefinied is set as default my the js engine and the programmer should never set a variable as undefined.
+    -boolean
+        -true or false
+    -number
+    -string
+    -symbol
+        -new in ES6
+
+-operators
+    -takes two or more parameters. calculates the parameters and returns a result
+
+-operator precedence
+    -which operator gets calculated first
+    -PEMDAS
+
+-operator associativity
+    -which operator of the same importance gets calculated first
+    -in PEMDAS it is Multiplication vs Division vs Remainder(modulus) and Addition vs Subtraction
+
+-coercion
+    -convert a value's data type to a different data type. like a number to a string
+
+-objects
+    -in an object, a value that is a primitive data is called a property
+    -in an object, another object is also called a property
+    -in an object, a function is called a method
+
+=================================================================================================================================

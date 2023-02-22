@@ -149,3 +149,6 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
     -in an object, a function is called a method
 
 =================================================================================================================================
+
+-callback
+    -calling a function as a parameter from inside another function. a nested function

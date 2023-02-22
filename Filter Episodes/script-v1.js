@@ -183,16 +183,22 @@ const episodes = [
 
 // create a filtered array that contains 
 // only episodes that are only part of season 1
-const season1Episodes = episodes.filter(x => x.episode.includes('S01')); // use .filter
+const season1Episodes = episodes.filter((x) => {
+    return x.episode.includes('S01');
+}); // use .filter
 console.log(season1Episodes);
 
 // create a filtered array that contains
 // only episodes shot after 2013;
-const lateEpisodes = episodes.filter(x => Date.parse(x.air_date) > Date.parse('1.1.2014')); // use.filter
+const lateEpisodes = episodes.filter((x) => {
+    return Date.parse(x.air_date) > Date.parse('1.1.2014');
+}); // use.filter
 console.log(lateEpisodes);
 
 // create a filtered array that contains
 // only episodes that contain the letter 'o' in the `name` key
 // eg: {name: "Look Who's Purging Now"} will pass
-const oEpisodes = episodes.filter(x => x.name.includes('o')); // use.filter 
+const oEpisodes = episodes.filter((x) => {
+    return x.name.includes('o');
+}); // use.filter 
 console.log(oEpisodes);

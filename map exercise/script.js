@@ -9,7 +9,7 @@ const squareNumbers = numbers.map(function(num){
     newArray += num * num;
     return newArray;
 }); // fix this
-console.log(squareNumbers);
+console.log(squareNumbers); 
 
 // given the names array, use .map to return a new array
 // that has the first letter of each word from with the string uppercased
@@ -54,7 +54,14 @@ console.log(namesToObject);
 //expected output: [{value: 'john smith', letters: ['j', 'o', 'h', 'n', 's', 'm', 'i', 't', 'h']}]
 
 const namesToObjectAndLetters = names.map(function(fullName){
-    let object = {};
-    
+    let obj = {};
+    let arrLetters = [];
+    const split = fullName.split(' ');
+    const join = split[0].concat(split[1])
+    arrLetters = join.split('')
+    // console.log(arrLetters)
+    obj.value = fullName;
+    obj.letters = arrLetters;
+    return obj;
 }); // fix this
 console.log(namesToObjectAndLetters)

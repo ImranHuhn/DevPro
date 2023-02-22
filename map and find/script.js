@@ -1,3 +1,5 @@
+
+
 const colors = [
     { id: 1, color: "red" },
     { id: 2, color: "blue" },
@@ -15,11 +17,12 @@ const colors = [
     }
   ];
   
-  export function mapColorsToData(data, colors) {
-    // data.map()
-    return;
-  }
-  
+function mapColorsToData(data, colors) {
+
+return;
+}
+
+mapColorsToData(data, colors);
 
 //   const expected = [
 //     { colorId: 1, color: "red" },

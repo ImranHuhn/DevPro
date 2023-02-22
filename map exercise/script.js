@@ -4,25 +4,18 @@ const names = ['john smith', 'james bond', 'lara croft', 'tony stark', 'peter pa
 // given the numbers array, use .map to return a new array
 // that has all the items squared
 // expected output: [1,4,9,16...]
-const squareNumbers = numbers.map(function(num){
-    let newArray = [];
-    newArray += num * num;
-    return newArray;
-}); // fix this
+const squareNumbers = numbers.map(function(num){ return num * num;}); // fix this
 console.log(squareNumbers); 
 
 // given the names array, use .map to return a new array
 // that has the first letter of each word from with the string uppercased
 // expected output: ['John Smith', 'James Bond'...]
 const uppercasedNames = names.map(function(fullName){
-    let newArray = [];
     const splitString = fullName.split(' ');
-    const fName = splitString[0].charAt(0).toUpperCase() + splitString[0].slice(1);
-    const lName = splitString[1].charAt(0).toUpperCase() + splitString[1].slice(1);
-    // console.log(splitString[0].charAt(0).toUpperCase() + splitString[0].slice(1));
-    // console.log(splitString[1].charAt(0).toUpperCase() + splitString[1].slice(1));
-    newArray += fName + ' ' + lName;
-    return newArray;
+    function completeName(string){
+        return splitString[string].charAt(0).toUpperCase() + splitString[string].slice(1)
+    }
+    return completeName(0) + ' ' + completeName(1)
 }); // fix this
 console.log(uppercasedNames);
 
@@ -30,9 +23,7 @@ console.log(uppercasedNames);
 // return a new array that hass all the even numbers doubled
 // expected output: [1,4,3,8,5,12 ...]
 const doubleEvens = numbers.map(function(num){
-    let newArray = [];
-    (num % 2 === 0 ? newArray += num + num : newArray += num);
-    return newArray;
+    return (num % 2 === 0 ? num + num : num);
 }); // fix this
 console.log(doubleEvens);
 
@@ -41,11 +32,7 @@ console.log(doubleEvens);
 // the current string and a length value that contains the length of the current string
 // expected output: [{value: 'john smith', length: 10} ...]
 const namesToObject = names.map(function(fullName){
-    let newArray = [], obj = {};
-    obj.value = fullName;
-    obj.length = fullName.length;
-    newArray = obj;
-    return newArray;
+    return obj = {value: fullName, length: fullName.length};
 }); // fix this
 console.log(namesToObject);
 
@@ -54,14 +41,11 @@ console.log(namesToObject);
 //expected output: [{value: 'john smith', letters: ['j', 'o', 'h', 'n', 's', 'm', 'i', 't', 'h']}]
 
 const namesToObjectAndLetters = names.map(function(fullName){
-    let obj = {};
-    let arrLetters = [];
-    const split = fullName.split(' ');
-    const join = split[0].concat(split[1])
-    arrLetters = join.split('')
-    // console.log(arrLetters)
-    obj.value = fullName;
-    obj.letters = arrLetters;
+    const obj = { value: fullName, letters: []};
+    const splitName = fullName.split(' ');
+    const joinName = splitName[0].concat(splitName[1]);
+    const splitLetter = joinName.split('');
+    obj.letters += splitLetter;
     return obj;
 }); // fix this
 console.log(namesToObjectAndLetters)

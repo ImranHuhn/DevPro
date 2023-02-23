@@ -7,6 +7,30 @@ good practice:
 
 ======================================
 
+Array Methods:
+
+-mutable array methods
+    -modifies original array
+        -list of most commonly used mutable array methods:
+            pop()
+            push()
+            reverse()
+            shift()
+            sort()
+            splice()
+            unshift()
+
+-immutable array methods
+    -creates a new array
+        -list of most commonly used immutable array methods:
+            concat()
+            filter()
+            map()
+            slice()
+            splice() (when removed arrays are returned, this method creates a new array)
+
+===========================================
+
 data structures. Arrays and Objects:
 
 [ {a:b}, {c:d}, {e:f} ]
@@ -152,3 +176,8 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
 
 -callback
     -calling a function as a parameter from inside another function. a nested function
+
+-return
+    -within the codeblock, code does not execute/run after "return;"
+    -return is the result of a function or codeblock
+    

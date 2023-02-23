@@ -18,14 +18,34 @@ const colors = [
   ];
   
 function mapColorsToData(data, colors) {
+  
+  const result = data.map(function(x){
+    const findId = colors.find(y => x.colorId === y.id)
+    return obj = {colorId: findId.id, color: findId.color}
+  })
+console.log(result);
 
 return;
 }
-
-mapColorsToData(data, colors);
+console.log(mapColorsToData(data, colors));
+// mapColorsToData(data, colors);
 
 //   const expected = [
 //     { colorId: 1, color: "red" },
 //     { colorId: 2, color: "blue" },
 //     { colorId: 3, color: "green" }
 //   ];
+
+// export function mapColorsToData(items, colors) {
+//   const mapItems = items.map(function(x){
+//     const findId = colors.find(function(y){
+//       if(x.colorId === y.id){
+//         const obj = {colorId: y.id, color: y.color}
+//         return obj;
+//       }
+//       return findId;
+//     })
+//     return mapItems;
+//   })
+//   return;
+// }

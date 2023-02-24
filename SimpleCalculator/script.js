@@ -12,7 +12,7 @@ const subtract = document.querySelector('#subtraction');
 const divide = document.querySelector('#division');
 const sum = document.querySelector('#sumation');
 
-function input(){this.value.trim().length && isNaN(this.value) ? this.classList.add('invalid') : this.classList.remove('invalid');}
+function input(){this.value.length !== 0  && isNaN(this.value) ? this.classList.add('invalid') : this.classList.remove('invalid')};
 
 multiply.addEventListener('click', () => display.innerText = parseInt(firstNum.value) * parseInt(secondNum.value))
 subtract.addEventListener('click', () => display.innerText = parseInt(firstNum.value) - parseInt(secondNum.value))

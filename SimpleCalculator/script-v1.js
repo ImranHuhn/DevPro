@@ -62,3 +62,6 @@ sum.addEventListener('click', () => {
     return result;
 })
 
+
+
+

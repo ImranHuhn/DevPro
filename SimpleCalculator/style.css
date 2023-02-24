@@ -10,12 +10,10 @@ h1, h2 {
     color: white;
 }
 
-.valid {
-    border: 3px solid aqua;
-}
-
 .invalid {
     border: 3px solid red !important;
+    border-radius: 5px;
+    outline: none;
 }
 
 #result {

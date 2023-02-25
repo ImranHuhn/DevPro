@@ -8,7 +8,7 @@
     <title>SimpleCalculator</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-calc">
         <h1>Javacript Calculator</h1>
         <h2>Super Simple</h2>
         <div>
@@ -18,11 +18,35 @@
             <button id="subtraction">-</button>
             <button id="multiplication">x</button>
             <button id="division">/</button>
+            <button id="special">(Click Me)</button>
         </div>
         <div id="result-wrapper">
             <h1 id="result"></h1>
         </div>
     </div>
+    <div class="container-game">
+        <h1>I want to play a game...</h1>
+        <h2>Choose your parameters wisely</h2>
+        <div>
+            <input class="number-range" type="number" id="number-range" name="number-range" min="1" max="1000" placeholder="Enter Number" value="">
+            <label for="number-range"> Number Range ( 1 - 1000 )</label><br>
+            <input class="game" type="checkbox" id="sum-game" name="sum-game" value="sum-game">
+            <label for="sum-game"> Sumation Game</label><br>
+            <input class="game" type="checkbox" id="subtract-game" name="subtract-game" value="subtract-game">
+            <label for="subtract-game"> Subtraction Game</label><br>
+            <input class="game" type="checkbox" id="multiply-game" name="multiply-game" value="multiply-game">
+            <label for="multiply-game"> Multiplication Game</label><br>
+            <input class="game" type="checkbox" id="division-game" name="division-game" value="division-game">
+            <label for="division-game"> Division Game</label><br>
+            <button id="start">Start</button>
+        </div>
+        <div id="result-wrapper">
+            <h1 id="result"></h1>
+        </div>
+    </div>
+
+
+    <img src="https://i.pinimg.com/originals/4d/0e/62/4d0e627274d8b05e8865714ae257a177.png" alt="saw-puppet">
     <script src="./script.js"></script>
 </body>
 </html>

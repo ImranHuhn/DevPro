@@ -14,6 +14,8 @@ h1, h2 {
 .container-calc {
     transform: translateY(15rem);
     height: 20rem;
+    position: absolute;
+    z-index: 1;
 }
 
 .invalid {
@@ -22,8 +24,9 @@ h1, h2 {
     outline: none;
 }
 
-#result {
+#result, #result-game {
     width: 500px;
+    padding-top: 3rem;
     margin: 0 auto;
 }
 
@@ -40,7 +43,7 @@ img {
 }
 
 .remove-calc {
-    transform: translateY(-10rem);
+    transform: translateY(-15rem);
     transition: transform 5s ease-in-out;
 }
 
@@ -49,6 +52,7 @@ img {
     transform: translateY(3rem);
     height: 20rem;
     opacity: 0;
+    z-index: 0;
 }
 
 .opacity-show {
@@ -64,4 +68,9 @@ img {
 #special {
     color: white;
     background-color: red;
+}
+
+.answer-wrapper {
+    display: flex;
+    justify-content: center;
 }

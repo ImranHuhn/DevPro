@@ -14,26 +14,26 @@ function validator() {
 }
 
 function operation(op) {
-  const a = parseInt(firstInput.value);
-  const b = parseInt(secondInput.value);
-  if (!isNaN(a) && !isNaN(b)) {
+    const a = parseInt(firstInput.value);
+    const b = parseInt(secondInput.value);
+    if (!isNaN(a) && !isNaN(b)) {
     switch (op) {
-      case "multiply":
-        display.innerText = a * b;
-        break;
-      case "subtract":
-        display.innerText = a - b;
-        break;
-      case "divide":
-        display.innerText = a / b;
-        break;
-      case "sum":
-        display.innerText = a + b;
-        break;
+        case "multiply":
+            display.innerText = a * b;
+            break;
+        case "subtract":
+            display.innerText = a - b;
+            break;
+        case "divide":
+            display.innerText = a / b;
+            break;
+        case "sum":
+            display.innerText = a + b;
+            break;
     }
-  } else {
-    display.innerText = "ENTER NUMBERS";
-  }
+    } else {
+        display.innerText = "ENTER NUMBERS";
+    }
 }
 
 firstInput.addEventListener("input", validator);
@@ -45,23 +45,37 @@ sum.addEventListener("click", () => {operation("sum")});
 
 
 //////////////////////////////////////////////////////////
-
+// game section
 
 const special = document.querySelector("#special");
 const start = document.querySelector("#start");
+const exit = document.querySelector("#exit");
+const submit = document.querySelector("#submit");
+const restart = document.querySelector("#restart");
+const resultGame = document.querySelector("#result-game");
 const sumGame = document.querySelector("#sum-game");
 const subtractGame = document.querySelector("#subtract-game");
 const multiplyGame = document.querySelector("#multiply-game");
 const divisionGame = document.querySelector("#division-game");
 const checkBox = document.querySelectorAll('.game');
+const image = document.querySelector('img');
+const containerCalc = document.querySelector('.container-calc');
+const containerGame = document.querySelector('.container-game');
+const answerInput = document.querySelector('#answer-game');
 
+let rightAns = 0;
 
-special.addEventListener("click", () => {
-    document.querySelector('img').classList.add('add-puppet');
-    document.querySelector('.container-calc').classList.add('remove-calc');
-    document.querySelector('.container-game').classList.add('opacity-show');
-});
+function gameMode() {
+    image.classList.add('add-puppet');
+    containerCalc.classList.add('remove-calc');
+    containerGame.classList.add('opacity-show');
+}
 
+function exitGameMode() {
+    image.classList.remove('add-puppet');
+    containerCalc.classList.remove('remove-calc');
+    containerGame.classList.remove('opacity-show');
+}
 
 // random operator
 function randomParams() {
@@ -75,38 +89,71 @@ function randomParams() {
         }
     }
     randomOp = checkArray[Math.floor(Math.random() * checkArray.length)];
-    // console.log(checkArray)
-    // console.log(random)
-    console.log(randomOp);
-
-    console.log(randomOne, randomTwo);
+    // console.log(randomOne, randomOp, randomTwo);
+    calcGame(randomOne, randomOp, randomTwo);
 }
 
+function calcGame(a, op, b) {
+    // console.log(a, op, b)
+    if (!isNaN(a) && !isNaN(b)) {
+        switch (op) {
+            case "multiply-game":
+                rightAns = a * b;
+                resultGame.innerText = a + ' x ' + b;
+                // matchAns(rightAns);
+                break;
+            case "subtract-game":
+                rightAns = a - b;
+                resultGame.innerText = a + ' - ' + b;
+                // matchAns(rightAns);
+                break;
+            case "divide-game":
+                rightAns = a / b;
+                resultGame.innerText = a + ' / ' + b;
+                // matchAns(rightAns);
+                break;
+            case "sum-game":
+                rightAns = a + b;
+                resultGame.innerText = a + ' + ' + b;
+                // matchAns(rightAns);
+                break;
+        }
+    } else {
+        resultGame.innerText = "ENTER NUMBERS";
+    }
+}
 
-// random number
-// function randomNumbers() {
-//     const randomOne = Math.floor(Math.random() * document.querySelector('.number-range').value);
-//     const randomTwo = Math.floor(Math.random() * document.querySelector('.number-range').value);
-//     console.log(randomOne, randomTwo);
-//     return randomOne, randomTwo;
-// }
+function matchAns(z) {
+    // console.log(z)
+    // console.log(parseInt(document.querySelector('#answer-game').value))
+    if(parseInt(document.querySelector('#answer-game').value) === z){
+        // console.log('CORRECT!')
+        resultGame.innerText = 'CORRECT!';
+        resultGame.style.color = 'green';
+    } else {
+        // console.log('sry')
+        resultGame.innerText = 'WRONG!';
+        resultGame.style.color = 'red';
+    }
+}
 
+function reset() {
+    resultGame.style.color = 'white';
+}
 
-
+answerInput.addEventListener("input", validator);
+special.addEventListener("click", gameMode);
+exit.addEventListener("click", exitGameMode);
 start.addEventListener("click", () => {
-    // console.log('btn clicked')
-    
-    // if(sumGame.checked){
-    //     console.log(sumGame.value)
-    // } else if(subtractGame.checked){
-    //     console.log(subtractGame.value)
-    // } else if(multiplyGame.checked){
-    //     console.log(multiplyGame.value)
-    // } else if(divisionGame.checked){
-    //     console.log(divisionGame.value)
-    // }
+    reset();
     randomParams();
-    // randomNumbers();
-    // console.log(document.querySelector('.number-range').value)
+    // console.log(rightAns)
+});
+submit.addEventListener("click", () => {
+    matchAns(rightAns);
+})
+restart.addEventListener("click", () => {
+    reset();
+    randomParams();
 });
 

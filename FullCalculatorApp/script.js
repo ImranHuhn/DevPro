@@ -7,7 +7,7 @@ const button = document.querySelector('button');
 const variable = ['(TBD)'];
 const buttonObjects = {
     smallButtonArray: ['7', '8', '9', '/', '4', '5', '6', 'x', '1', '2', '3', '-', 'C', '.', '0', '+'],
-    largeButtonArray: ['=', ...variable]
+    largeButtonArray: ['=', ...variable],
 };
 
 let firstNumber = 0;
@@ -54,8 +54,8 @@ function secondEntry(sign) {
 
 function operations(operator) {
     const symbol = previousEntryDisplay.innerText[previousEntryDisplay.innerText.length-1];
-    secondNumber = parseInt(currentEntryDisplay.innerText);
-    firstNumber = parseInt(firstNumber);
+    secondNumber = parseFloat(currentEntryDisplay.innerText);
+    firstNumber = parseFloat(firstNumber);
     switch(operator){
         case '/':
             if(previousEntryDisplay.innerText === '') {
@@ -98,7 +98,6 @@ function operations(operator) {
             }
             break;
         case '.':
-            console.log(currentEntryDisplay.innerText);
             if(!currentEntryDisplay.innerText.includes('.')) {
                 currentEntryDisplay.innerText += '.';
             }

@@ -4,10 +4,9 @@ const calculatorSmallButtons = document.querySelector('.calculator__small-button
 const calculatorLargeButtons = document.querySelector('.calculator__large-buttons');
 const button = document.querySelector('button');
 
-const variable = ['(TBD)'];
 const buttonObjects = {
     smallButtonArray: ['7', '8', '9', '/', '4', '5', '6', 'x', '1', '2', '3', '-', 'C', '.', '0', '+'],
-    largeButtonArray: ['=', ...variable],
+    largeButtonArray: ['=', 'To Binary'],
 };
 
 let firstNumber = 0;
@@ -111,8 +110,17 @@ function operations(operator) {
         case 'C':
             reset();
             break;
+        case 'To Binary':
+            toBinary();
+            break;
     }
 };
+
+function toBinary() {
+    const binary = parseInt(currentEntryDisplay.innerText).toString(2);
+    previousEntryDisplay.innerText = binary
+    console.log('binary')
+}
 
 function buttonPress(e) {
     const value = e.target.innerText;

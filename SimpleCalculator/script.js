@@ -51,7 +51,7 @@ const special = document.querySelector("#special");
 const start = document.querySelector("#start");
 const exit = document.querySelector("#exit");
 const submit = document.querySelector("#submit");
-const restart = document.querySelector("#restart");
+// const restart = document.querySelector("#restart");
 const resultGame = document.querySelector("#result-game");
 const sumGame = document.querySelector("#sum-game");
 const subtractGame = document.querySelector("#subtract-game");
@@ -75,6 +75,7 @@ function exitGameMode() {
     puppet.classList.remove('add-puppet');
     containerCalc.classList.remove('remove-calc');
     containerGame.classList.remove('opacity-show');
+    reset();
 }
 
 // random operator
@@ -119,11 +120,12 @@ function calcGame(a, op, b) {
 
 function matchAns(z) {
     if(parseInt(document.querySelector('#answer-game').value) === z){
-        resultGame.innerText = 'CORRECT!';
-        resultGame.style.color = 'green';
+        timerReset();
+        randomParams();
     } else {
         resultGame.innerText = 'WRONG!';
         resultGame.style.color = 'red';
+        showDownload();
     }
 }
 
@@ -137,31 +139,82 @@ exit.addEventListener("click", exitGameMode);
 start.addEventListener("click", () => {
     reset();
     randomParams();
+    timerStart();
 });
 submit.addEventListener("click", () => {
     matchAns(rightAns);
 })
-restart.addEventListener("click", () => {
-    reset();
-    randomParams();
-});
 
 /////////////////////////
-// test
+// download bar
 
 const downloadBar = document.querySelector('.download-bar');
-const chevronIcon = document.querySelector('.download-bar__chevron-wrapper')
-const fileName = document.querySelector('.download-bar__file-name')
-const circleImage = document.querySelector('.download-bar__circle-image')
-const arrow = document.querySelector('.download-bar__arrow-wrapper')
+const chevronIcon = document.querySelector('.download-bar__chevron-wrapper');
+const fileName = document.querySelector('.download-bar__file-name');
+const circleImage = document.querySelector('.download-bar__circle-image');
+const arrowIcon = document.querySelector('.download-bar__arrow-wrapper');
+const timerDisplay = document.querySelector('.download-seconds');
 
-function download() {
+let startCount = 5;
+let countDown = startCount;
+let countTimer;
+let countTimeout;
+
+timerDisplay.innerText = countDown;
+
+function timerStart() {
+    countTimer = setInterval(() => {
+        timerDisplay.innerText = --countDown;
+    }, 1000)
+    
+    countTimeout = setTimeout(() => {
+        clearInterval(countTimer);
+        (countDown <= 0 ? showDownload() : removeDownload())
+    }, 1000 * countDown); 
+}
+
+function timerStop() {
+    clearInterval(countTimer);
+    clearInterval(countTimeout);
+}
+
+function timerReset() {
+    timerStop();
+    countDown = startCount;
+    timerDisplay.innerText = countDown;
+    timerStart();
+}
+
+function showDownload() {
     downloadBar.classList.add('show-download-bar');
     chevronIcon.classList.add('show-download-file');
     fileName.classList.add('show-download-file');
-    circleImage.classList.add('show-download-file');
-    arrow.classList.add('remove-download-arrow');
+    arrowIcon.classList.add('move-arrow-down');
+    arrowIcon.classList.add('remove-arrow');
+    arrowIcon.classList.add('visible');
+    fileCircle();
+} 
+
+function removeDownload() {
+    downloadBar.classList.remove('show-download-bar');
+    chevronIcon.classList.remove('show-download-file');
+    fileName.classList.remove('show-download-file');
+    arrowIcon.classList.remove('move-arrow-down');
+    arrowIcon.classList.remove('visible');
 }
 
+function fileCircle() {
+    const circle = setInterval(() => {
+        (!circleImage.classList.contains('display-none') 
+        ? circleImage.classList.add('display-none')
+        : circleImage.classList.remove('display-none'));
+    }, 800) 
 
-download();
+    setTimeout(() => {
+        clearInterval(circle);
+    }, 1000 * 4)
+
+    if(!circleImage.classList.contains('display-none')){
+        circleImage.classList.remove('display-none');
+    }
+}

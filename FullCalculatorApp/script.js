@@ -9,6 +9,7 @@ const buttonObjects = {
     largeButtonArray: ['=', 'To Binary'],
 };
 
+const symbol = previousEntryDisplay.innerText[previousEntryDisplay.innerText.length-1];
 let firstNumber = 0;
 let secondNumber = 0;
 let resultNumber = 0;
@@ -54,52 +55,8 @@ function transferEntryToTop(sign) {
     previousEntryDisplay.innerText = firstNumber += (' ' + sign);
 }
 
-function operations(operator) {
-    const symbol = previousEntryDisplay.innerText[previousEntryDisplay.innerText.length-1];
-    secondNumber = parseFloat(currentEntryDisplay.innerText);
-    firstNumber = parseFloat(firstNumber);
-
-    switch(operator){
-        case '/':
-            if(previousEntryDisplay.innerText === '') {
-                firstEntry(operator);
-            } else if (isNaN(symbol)) {
-                resultNumber = firstNumber / secondNumber;
-                secondEntry(operator);
-            } else {
-                reset();
-            }
-            break;
-        case 'x':
-            if(previousEntryDisplay.innerText === '') {
-                firstEntry(operator);
-            } else if (isNaN(symbol)) {
-                resultNumber = firstNumber * secondNumber;
-                secondEntry(operator);
-            } else {
-                reset();
-            }
-            break;
-        case '-':
-            if(previousEntryDisplay.innerText === '') {
-                firstEntry(operator);
-            } else if (isNaN(symbol)) {
-                resultNumber = firstNumber - secondNumber;
-                secondEntry(operator);
-            } else {
-                reset();
-            }
-            break;
-        case '+':
-            if(previousEntryDisplay.innerText === '') {
-                firstEntry(operator);
-            } else if (isNaN(symbol)) {
-                resultNumber = firstNumber + secondNumber;
-                secondEntry(operator);
-            } else {
-                reset();
-            }
-            break;
+function otherOperations(nonInteger) {
+    switch(nonInteger) {
         case '.':
             if(!currentEntryDisplay.innerText.includes('.')) {
                 currentEntryDisplay.innerText += '.';
@@ -109,7 +66,6 @@ function operations(operator) {
             operations(symbol);
             firstNumber = resultNumber;
             previousEntryDisplay.innerText = resultNumber;
-            // console.log(firstNumber,secondNumber,resultNumber);
             break;
         case 'C':
             reset();
@@ -117,25 +73,53 @@ function operations(operator) {
         case 'To Binary':
             toBinary();
             break;
+        default:
+            operations(nonInteger)
+    }
+}
+
+function operations(operator) {
+    secondNumber = parseFloat(currentEntryDisplay.innerText);
+    firstNumber = parseFloat(firstNumber);
+
+    if(previousEntryDisplay.innerText === '') {
+        firstEntry(operator);
+    } else if (isNaN(symbol)) {
+        switch(operator){
+            case '/':
+                    resultNumber = firstNumber / secondNumber;
+                break;
+            case 'x':
+                    resultNumber = firstNumber * secondNumber;
+                break;
+            case '-':
+                    resultNumber = firstNumber - secondNumber;
+                break;
+            case '+':
+                    resultNumber = firstNumber + secondNumber;
+                break;
+        }
+        secondEntry(operator);
+    } else {
+        reset();
     }
 };
 
 function toBinary() {
     const binary = parseInt(currentEntryDisplay.innerText).toString(2);
     previousEntryDisplay.innerText = binary;
-    // console.log('binary');
 };
 
 function buttonPress(e) {
     const value = e.target.innerText;
-    const tag = e.target.tagName;
-    if(tag === 'BUTTON' && !isNaN(value)) {
+    const tag = e.target.tagName === 'BUTTON';
+    if(tag && !isNaN(value)) {
         currentDisplay(value);
-    } else if(tag === 'BUTTON' && isNaN(value)) {
-        operations(value);
+    } else if(tag && isNaN(value)) {
+        otherOperations(value);
     }
 };
 
 window.addEventListener('load', init);
-calculatorSmallButtons.addEventListener('click', e => buttonPress(e));
-calculatorLargeButtons.addEventListener('click', e => buttonPress(e));
+calculatorSmallButtons.addEventListener('click',buttonPress);
+calculatorLargeButtons.addEventListener('click',buttonPress);

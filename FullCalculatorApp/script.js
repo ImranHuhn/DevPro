@@ -1,5 +1,5 @@
-const previousEntryDisplay = document.querySelector('.previous-entries');
-const currentEntryDisplay = document.querySelector('.current-entries');
+const topEntryDisplay = document.querySelector('.top-entries');
+const bottomEntryDisplay = document.querySelector('.bottom-entries');
 const calculatorSmallButtons = document.querySelector('.calculator__small-buttons');
 const calculatorLargeButtons = document.querySelector('.calculator__large-buttons');
 const button = document.querySelector('button');
@@ -9,7 +9,7 @@ const buttonObjects = {
     largeButtonArray: ['=', 'To Binary'],
 };
 
-const symbol = previousEntryDisplay.innerText[previousEntryDisplay.innerText.length-1];
+const symbolInTopDisplay = topEntryDisplay.innerText[topEntryDisplay.innerText.length-1];
 let firstNumber = 0;
 let secondNumber = 0;
 let resultNumber = 0;
@@ -19,8 +19,8 @@ function init() {
 };
 
 function reset() {
-    currentEntryDisplay.innerText = '';
-    previousEntryDisplay.innerText = '';
+    bottomEntryDisplay.innerText = '';
+    topEntryDisplay.innerText = '';
     firstNumber = 0;
     secondNumber = 0;
     resultNumber = 0;
@@ -36,12 +36,12 @@ function buttonSetup() {
     });
 };
 
-function currentDisplay(buttonEntered) {
-    currentEntryDisplay.innerText += buttonEntered;
+function bottomDisplay(buttonEntered) {
+    bottomEntryDisplay.innerText += buttonEntered;
 };
 
 function firstEntry(firstSign) {
-    firstNumber = currentEntryDisplay.innerText;
+    firstNumber = bottomEntryDisplay.innerText;
     transferEntryToTop(firstSign);
 }
 
@@ -51,21 +51,22 @@ function secondEntry(secondSign) {
 }
 
 function transferEntryToTop(sign) {
-    currentEntryDisplay.innerText = '';
-    previousEntryDisplay.innerText = firstNumber += (' ' + sign);
+    bottomEntryDisplay.innerText = '';
+    topEntryDisplay.innerText = firstNumber += (' ' + sign);
 }
 
 function otherOperations(nonInteger) {
+    const symbolInTopDisplay = topEntryDisplay.innerText[topEntryDisplay.innerText.length-1];
     switch(nonInteger) {
         case '.':
-            if(!currentEntryDisplay.innerText.includes('.')) {
-                currentEntryDisplay.innerText += '.';
+            if(!bottomEntryDisplay.innerText.includes('.')) {
+                bottomEntryDisplay.innerText += '.';
             }
             break;
         case '=':
-            operations(symbol);
+            operations(symbolInTopDisplay);
             firstNumber = resultNumber;
-            previousEntryDisplay.innerText = resultNumber;
+            topEntryDisplay.innerText = resultNumber;
             break;
         case 'C':
             reset();
@@ -74,17 +75,17 @@ function otherOperations(nonInteger) {
             toBinary();
             break;
         default:
-            operations(nonInteger)
+            operations(nonInteger, symbolInTopDisplay)
     }
 }
 
-function operations(operator) {
-    secondNumber = parseFloat(currentEntryDisplay.innerText);
+function operations(operator, symbolInTopDisplay) {
+    secondNumber = parseFloat(bottomEntryDisplay.innerText);
     firstNumber = parseFloat(firstNumber);
 
-    if(previousEntryDisplay.innerText === '') {
+    if(topEntryDisplay.innerText === '') {
         firstEntry(operator);
-    } else if (isNaN(symbol)) {
+    } else if (isNaN(symbolInTopDisplay)) {
         switch(operator){
             case '/':
                     resultNumber = firstNumber / secondNumber;
@@ -106,15 +107,15 @@ function operations(operator) {
 };
 
 function toBinary() {
-    const binary = parseInt(currentEntryDisplay.innerText).toString(2);
-    previousEntryDisplay.innerText = binary;
+    const binary = parseInt(bottomEntryDisplay.innerText).toString(2);
+    topEntryDisplay.innerText = binary;
 };
 
 function buttonPress(e) {
     const value = e.target.innerText;
     const tag = e.target.tagName === 'BUTTON';
     if(tag && !isNaN(value)) {
-        currentDisplay(value);
+        bottomDisplay(value);
     } else if(tag && isNaN(value)) {
         otherOperations(value);
     }

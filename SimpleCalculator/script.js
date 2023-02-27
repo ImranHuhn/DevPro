@@ -212,9 +212,5 @@ function fileCircle() {
 
     setTimeout(() => {
         clearInterval(circle);
-    }, 1000 * 4)
-
-    if(!circleImage.classList.contains('display-none')){
-        circleImage.classList.remove('display-none');
-    }
+    }, 1000 * 6)
 }

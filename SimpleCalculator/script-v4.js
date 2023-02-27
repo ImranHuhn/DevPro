@@ -89,27 +89,33 @@ function randomParams() {
         }
     }
     randomOp = checkArray[Math.floor(Math.random() * checkArray.length)];
+    // console.log(randomOne, randomOp, randomTwo);
     calcGame(randomOne, randomOp, randomTwo);
 }
 
 function calcGame(a, op, b) {
+    // console.log(a, op, b)
     if (!isNaN(a) && !isNaN(b)) {
         switch (op) {
             case "multiply-game":
                 rightAns = a * b;
                 resultGame.innerText = a + ' x ' + b;
+                // matchAns(rightAns);
                 break;
             case "subtract-game":
                 rightAns = a - b;
                 resultGame.innerText = a + ' - ' + b;
+                // matchAns(rightAns);
                 break;
             case "divide-game":
                 rightAns = a / b;
                 resultGame.innerText = a + ' / ' + b;
+                // matchAns(rightAns);
                 break;
             case "sum-game":
                 rightAns = a + b;
                 resultGame.innerText = a + ' + ' + b;
+                // matchAns(rightAns);
                 break;
         }
     } else {
@@ -118,10 +124,14 @@ function calcGame(a, op, b) {
 }
 
 function matchAns(z) {
+    // console.log(z)
+    // console.log(parseInt(document.querySelector('#answer-game').value))
     if(parseInt(document.querySelector('#answer-game').value) === z){
+        // console.log('CORRECT!')
         resultGame.innerText = 'CORRECT!';
         resultGame.style.color = 'green';
     } else {
+        // console.log('sry')
         resultGame.innerText = 'WRONG!';
         resultGame.style.color = 'red';
     }
@@ -137,6 +147,7 @@ exit.addEventListener("click", exitGameMode);
 start.addEventListener("click", () => {
     reset();
     randomParams();
+    // console.log(rightAns)
 });
 submit.addEventListener("click", () => {
     matchAns(rightAns);
@@ -146,22 +157,3 @@ restart.addEventListener("click", () => {
     randomParams();
 });
 
-/////////////////////////
-// test
-
-const downloadBar = document.querySelector('.download-bar');
-const chevronIcon = document.querySelector('.download-bar__chevron-wrapper')
-const fileName = document.querySelector('.download-bar__file-name')
-const circleImage = document.querySelector('.download-bar__circle-image')
-const arrow = document.querySelector('.download-bar__arrow-wrapper')
-
-function download() {
-    downloadBar.classList.add('show-download-bar');
-    chevronIcon.classList.add('show-download-file');
-    fileName.classList.add('show-download-file');
-    circleImage.classList.add('show-download-file');
-    arrow.classList.add('remove-download-arrow');
-}
-
-
-download();

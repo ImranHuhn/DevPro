@@ -1,3 +1,9 @@
+react:
+-props should be used maximum 3 levels. of component, not including itself when setting up
+
+
+=======================================
+
 good practice:
 -use === over == to prevent coercion
 -use !== over != to prevent coercion

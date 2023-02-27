@@ -4,6 +4,10 @@ good practice:
 -use const over let
 -use addEventListeners('click', ()=>{}) over .Onclick(){} to prevent overwriting other event listeners
 
+==========================================
+refactor strategies:
+-if there are repeated lines inside if/else or switch statements (aka conditional staments), bring it outside of the conditional statement and replace the non-repeatable lines with the entire conditional statements itself.
+
 
 ======================================
 

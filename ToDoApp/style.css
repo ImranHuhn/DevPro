@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.todoapp-container {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.todoapp-header {
+    display: flex;
+    justify-content: center;
+    background-image: url(https://www.gannett-cdn.com/presto/2018/09/10/PDEM/fb211df4-d0ef-4088-81c5-cfd11d2490e2-1.jpg?crop=1919,1073,x0,y0&width=660&height=372&format=pjpg&auto=webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 444px;
+    height: 250px;
+}
+
+.todoapp-title {
+    background-color: rgba(0,0,0,.6);
+    color: white;
+    text-align: center;
+    margin: auto 0;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+.todoapp-body__input {
+    width: 100%;
+}
+
+.todoapp-body__wrapper {
+    margin: 0 auto;
+    width: 80%;
+}

@@ -10,9 +10,11 @@ const buttonObjects = {
 };
 
 const symbolInTopDisplay = topEntryDisplay.innerText[topEntryDisplay.innerText.length-1];
-let firstNumber = 0;
-let secondNumber = 0;
-let resultNumber = 0;
+let firstNumber = '';
+let secondNumber = '';
+let resultNumber = '';
+
+let bottomNumber = '';
 
 function init() {
     buttonSetup();
@@ -21,46 +23,54 @@ function init() {
 function reset() {
     bottomEntryDisplay.innerText = '';
     topEntryDisplay.innerText = '';
-    firstNumber = 0;
-    secondNumber = 0;
-    resultNumber = 0;
+    firstNumber = '';
+    secondNumber = '';
+    resultNumber = '';
+    bottomNumber = '';
 };
 
 function buttonSetup() {
     reset();
     buttonObjects.smallButtonArray.forEach(button => {
-        calculatorSmallButtons.innerHTML += `<button>${button}</button>`;
+        const tagForSmallButton = `<button>${button}</button>`;
+        calculatorSmallButtons.innerHTML += tagForSmallButton;
     });
     buttonObjects.largeButtonArray.forEach(button => {
-        calculatorLargeButtons.innerHTML += `<button>${button}</button>`;
+        const tagForLargeButton = `<button>${button}</button>`;
+        calculatorLargeButtons.innerHTML += tagForLargeButton;
     });
 };
 
 function bottomDisplay(buttonEntered) {
+    bottomNumber += buttonEntered;
     bottomEntryDisplay.innerText += buttonEntered;
+    console.log(bottomNumber)
 };
 
 function firstEntry(firstSign) {
     firstNumber = bottomEntryDisplay.innerText;
     transferEntryToTop(firstSign);
-}
+};
 
 function secondEntry(secondSign) {
     firstNumber = resultNumber;
     transferEntryToTop(secondSign);
-}
+};
 
 function transferEntryToTop(sign) {
-    bottomEntryDisplay.innerText = '';
+    bottomNumber = '';
+    bottomEntryDisplay.innerText = bottomNumber;
     topEntryDisplay.innerText = firstNumber += (' ' + sign);
-}
+};
 
 function otherOperations(nonInteger) {
-    const symbolInTopDisplay = topEntryDisplay.innerText[topEntryDisplay.innerText.length-1];
+    const symbolInTopDisplay = firstNumber[firstNumber.length-1];
     switch(nonInteger) {
         case '.':
-            if(!bottomEntryDisplay.innerText.includes('.')) {
-                bottomEntryDisplay.innerText += '.';
+            if(!bottomNumber.includes('.')) {
+                bottomNumber += '.';
+                bottomEntryDisplay.innerText = bottomNumber;
+                // console.log(bottomNumber)
             }
             break;
         case '=':
@@ -77,12 +87,11 @@ function otherOperations(nonInteger) {
         default:
             operations(nonInteger, symbolInTopDisplay)
     }
-}
+};
 
 function operations(operator, symbolInTopDisplay) {
-    secondNumber = parseFloat(bottomEntryDisplay.innerText);
+    secondNumber = parseFloat(bottomNumber);
     firstNumber = parseFloat(firstNumber);
-
     if(topEntryDisplay.innerText === '') {
         firstEntry(operator);
     } else if (isNaN(symbolInTopDisplay)) {

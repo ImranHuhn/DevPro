@@ -107,7 +107,7 @@ function operations(operator, symbolInTopDisplay) {
 };
 
 function toBinary() {
-    const binary = parseInt(bottomEntryDisplay.innerText).toString(2);
+    const binary = parseInt(firstNumber).toString(2);
     topEntryDisplay.innerText = binary;
 };
 

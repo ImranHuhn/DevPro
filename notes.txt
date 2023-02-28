@@ -12,7 +12,7 @@ good practice:
 -seperate data from ui. when change occurs in javascript, dont target ui. to do this put it in a variable and have the ui reflect the variable instead of directly targeting the ui. for security purposes to prevent hackers changing the data through the ui. prevent code injection. always use 2 variables to juggle with, one for ui and the other for data. you can achieve this by creating temporary const variable within the scope of the function
 -use double exclamation to turn a number into a boolean for conditions "!!"
 -when declaring variable for numbers that starts off empty, make it an empty string because it is easy to convert the string to a number in the code later on
--commonly used array method: map, find, reduce
+-commonly used array method: map, find, reduce, splice
 
 ==========================================
 Troubleshooting

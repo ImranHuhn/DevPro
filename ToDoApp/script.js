@@ -41,17 +41,20 @@ function render() {
                 </svg>
             </div>
         </li>`
+
+        deleteItem(index);
+        // todoList.addEventListener('click', (e) => {
+            //     const className = e.target.classList.value;
+            //     // console.log(className.includes('garbage'));
+            //     if(className.includes('garbage-icon')) {
+                //         // console.log(taskList);
+                //         taskList.splice(index, 1);
+                //         localStorage.setItem('taskList', JSON.stringify(taskList));
+                //         render();
+                //     }
+                // })
     })
-    
-    
-    todoList.addEventListener('click', (e) => {
-        const className = e.target.classList.value;
-        // console.log(className.includes('garbage'));
-        if(className.includes('garbage-icon')) {
-            console.log(className)
-        }
-    })
-    console.log(todoList);
+    // console.log(todoList);
 };
 
 function addItem() {
@@ -66,8 +69,17 @@ function addItem() {
     // console.log(taskList);
 };
 
-function deleteItem() {
-    console.log('clicked');
+function deleteItem(i) {
+    todoList.addEventListener('click', (e) => {
+        const className = e.target.classList.value;
+        // console.log(className.includes('garbage'));
+        if(className.includes('garbage-icon')) {
+            // console.log(taskList);
+            taskList.splice(i, 1);
+            localStorage.setItem('taskList', JSON.stringify(taskList));
+            render();
+        }
+    })
 };
 
 window.addEventListener('load', init);

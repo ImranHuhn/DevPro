@@ -12,8 +12,22 @@ good practice:
 -seperate data from ui. when change occurs in javascript, dont target ui. to do this put it in a variable and have the ui reflect the variable instead of directly targeting the ui. for security purposes to prevent hackers changing the data through the ui. prevent code injection. always use 2 variables to juggle with, one for ui and the other for data. you can achieve this by creating temporary const variable within the scope of the function
 -use double exclamation to turn a number into a boolean for conditions "!!"
 -when declaring variable for numbers that starts off empty, make it an empty string because it is easy to convert the string to a number in the code later on
+-commonly used array method: map, find, reduce
 
 ==========================================
+Troubleshooting
+1.	Comment out the parts that are not working
+2.	Comment out the parts that are irrelevant
+3.	After commenting out those parts, there should only be parts that are working
+4.	Uncomment one line of code, and work on it until it works
+5.	Then uncomment another line of code and work on it until it works
+6.	Cycle through 5 and 6
+
+
+Problem solving / how to build
+
+
+========================================
 refactor strategies:
 -if there are repeated lines inside if/else or switch statements (aka conditional staments), bring it outside of the conditional statement and replace the non-repeatable lines with the entire conditional statements itself.
 

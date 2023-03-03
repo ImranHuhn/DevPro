@@ -7,64 +7,67 @@
     <link rel="stylesheet" href="./style.css">
     <title>Pomodoro App</title>
 </head>
-<body>
+<body class="flex">
     <main>
         <section>
             <h1>Promodoro App</h1>
         </section>
         <section class="pomodoro-section">
-            <div>
-                <h2>Working on: "name of task from the list"</h2> <!--this appears when clicking on PMDR button on to do task list-->
+            <div class="pomodoro-container">
+                <!-- this appears when clicking on PMDR button on to do task list -->
+                <!-- <h2>Working on: "name of task from the list"</h2>  -->
                 <h2>"PMDR" a task and press Start!</h2>
                 <div>
-                    <h3>Pomodoro:</h3>
-                    <label for="pomodoro-total">
+                    <h3 class="text-center">Pomodoro:</h3>
+                    <label class="flex" for="pomodoro-total">
                         <input id="pomodoro-total" type="text" placeholder="25' default">
                     </label>
                 </div>
                 <div>
-                    <h3>Short Break:</h3>
-                    <label for="short-break">
+                    <h3 class="text-center">Short Break:</h3>
+                    <label class="flex" for="short-break">
                         <input id="short-break" type="text" placeholder="5' default">
                     </label>
                 </div>
                 <div>
-                    <h3>Long Break:</h3>
-                    <label for="long-break">
+                    <h3 class="text-center">Long Break:</h3>
+                    <label class="flex" for="long-break">
                         <input id="long-break" type="text" placeholder="15' default">
                     </label>
                 </div>
                 <div>
-                    <h3>Pomodoro Rounds:</h3>
-                    <label for="pomodoro-rounds">
+                    <h3 class="text-center">Pomodoro Rounds:</h3>
+                    <label class="flex" for="pomodoro-rounds">
                         <input id="pomodoro-rounds" type="text" placeholder="4 default">
                     </label>
                 </div>
                 <div>
-                    <h3>Time to work!</h3> <!--when timer start, this appears-->
-                    <h4>25:00</h4>
-                    <div>
-                        <button>start/pause</button>
+                    <!--when timer start, this appears-->
+                    <!-- <h3>Time to work!</h3>  -->
+                    <h2 class="pomodoro-timer text-center">25:00</h2>
+                    <div class="flex">
+                        <!-- <button>pause</button> -->
+                        <button>start</button>
                         <button>reset</button>
                     </div>
                 </div>
             </div>
             <div>
-                <div>
+                <div class="add-todo flex">
                     <button>+</button>
                     <label for="">
                         <input type="text" placeholder="Create a new To-Do...">
                     </label>
-                    <h3>Priority:</h3>
                     <select name="" id="">
+                        <option value="">Priority...</option>
                         <option value="">High</option>
                         <option value="">Medium</option>
                         <option value="">Low</option>
                     </select>
                 </div>
                 <div>
-                    <h3>Sort list by:</h3>
-                    <div>
+                    <h3 class="text-center">Sort list by:</h3>
+                    <div class="flex">
                         <label for="">
                             <input type="radio">Most recent
                         </label>
@@ -76,11 +79,11 @@
                         </label>
                     </div>
                 </div>
-                <div>
+                <div class="todo-list flex">
                     <label for="">
                         <input type="checkbox" name="" id="">
+                        <input type="text" placeholder="edit">
                     </label>
-                    <h5>tasks</h5>
                     <button>Done</button>
                     <button>Delete</button>
                     <button>PMDR</button>

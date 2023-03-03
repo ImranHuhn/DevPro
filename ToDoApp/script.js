@@ -10,53 +10,73 @@ function init() {
     render();
     addItem();
     deleteItem();
-}
+    completedItem();
+};
 
 function addItem() {
     plusIcon.addEventListener('click', () => {
         if(todoInput.value !== '') {
             const obj = {
                 currId: id++,
-                task: ''
+                task: '',
+                complete: false
             }
 
             obj.task = todoInput.value;
             todoInput.value = '';
+            
             taskArrayList.push(obj);
             localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
+            
             render();
         }
-        // console.log(taskArrayList);
     });
 };
 
 function deleteItem() {
     todoList.addEventListener('click', (e) => {
-        const className = e.target.classList.value.split(' ');
-        const classId = parseInt(className[0].replace('garbageId', ''));
-        taskArrayList.map((i) => {
-            console.log('id',i)
-            console.log('id',i.currId)
-            i.splice(i.contain(i.currId), 1)
+        if(e.target.classList.value.includes('garbage-icon')) {
+            const className = e.target.classList.value.split(' ');
+            const classId = parseInt(className[0].replace('garbageId', ''));
+            const targetIndex = taskArrayList.map((item) => {return item.currId}).indexOf(classId);
             
-        })
-        // console.log(classId)
-        // console.log(taskArrayList)
-        
+            taskArrayList.splice(targetIndex, 1);
+            localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
+        }
+        render()
     });
-}
+};
+
+function completedItem() {
+    todoList.addEventListener('click', (e) => {
+        const checkbox = document.getElementById(e.target.id); // output: input tag
+        const checkboxIdName = e.target.id; // output: id name 
+        const checkboxId = parseInt(checkboxIdName.replace('task', '')); // output: id number
+        const targetIndex = taskArrayList.map((item) => {return item.currId}).indexOf(checkboxId);
+
+        if(e.target.checked === true) {
+            checkbox.setAttribute("checked", "checked");
+            
+            taskArrayList[targetIndex].complete = true;
+            localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
+        } else {
+            checkbox.removeAttribute("checked");
+
+            taskArrayList[targetIndex].complete = false;
+            localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
+        }
+        render()
+    });
+};
 
 function render() {
-    // deleteItem();
     todoList.innerHTML = '';
     taskArrayList.map((item) => {
-        // console.log('item',item);
-        // console.log(taskArrayList);
         todoList.innerHTML += `
         <li class="todoapp-body__items">
             <div>
-                <input class="task" type="checkbox">
-                <label for="task">${item.task}</label>
+                <input id="task${item.currId}" class="task" type="checkbox" ${item.complete === true ? `checked="checked"` : ``}>
+                <label for="task${item.currId}">${item.task}</label>
             </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="garbageId${item.currId} garbage-icon w-6 h-6">
@@ -64,23 +84,7 @@ function render() {
                 </svg>
             </div>
         </li>`
-    })
+    });
 };
 
 window.addEventListener('load', init);
-
-/*
-do 3 versions:
-1) using JSON parse and JSON stringify
-2) use id as variable
-3) use date
-*/
-
-/* 
--create variable that gets data from local storage and default to 'empty task' list
--set local storage with key of task and value of task and value of the variable declared above
--event listeners for:
--plus button
--garabage icon
--checkbox
-*/

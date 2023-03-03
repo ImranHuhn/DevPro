@@ -8,7 +8,84 @@
     <title>Pomodoro App</title>
 </head>
 <body>
-    <h1>Promodoro App</h1>
+    <main>
+        <section>
+            <h1>Promodoro App</h1>
+        </section>
+        <section class="pomodoro-section">
+            <div>
+                <h2>"PMDR" a task and press Start!</h2>
+                <div>
+                    <h3>Pomodoro:</h3>
+                    <label for="pomodoro-total">
+                        <input id="pomodoro-total" type="text" placeholder="25' default">
+                    </label>
+                </div>
+                <div>
+                    <h3>Short Break:</h3>
+                    <label for="short-break">
+                        <input id="short-break" type="text" placeholder="5' default">
+                    </label>
+                </div>
+                <div>
+                    <h3>Long Break:</h3>
+                    <label for="long-break">
+                        <input id="long-break" type="text" placeholder="15' default">
+                    </label>
+                </div>
+                <div>
+                    <h3>Pomodoro Rounds:</h3>
+                    <label for="pomodoro-rounds">
+                        <input id="pomodoro-rounds" type="text" placeholder="4 default">
+                    </label>
+                </div>
+                <div>
+                    <h4>25:00</h4>
+                    <div>
+                        <button>start/pause</button>
+                        <button>reset</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button>+</button>
+                    <label for="">
+                        <input type="text" placeholder="Create a new To-Do...">
+                    </label>
+                    <h3>Priority:</h3>
+                    <select name="" id="">
+                        <option value="">High</option>
+                        <option value="">Medium</option>
+                        <option value="">Low</option>
+                    </select>
+                </div>
+                <div>
+                    <h3>Sort list by:</h3>
+                    <div>
+                        <label for="">
+                            <input type="radio">Most recent
+                        </label>
+                        <label for="">
+                            <input type="radio">Priority
+                        </label>
+                        <label for="">
+                            <input type="radio">Completed
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="">
+                        <input type="checkbox" name="" id="">
+                    </label>
+                    <h5>tasks</h5>
+                    <button>Done</button>
+                    <button>Delete</button>
+                    <button>PMDR</button>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="./script.js"></script>
 </body>
 </html>

@@ -1,7 +1,21 @@
 body {
     background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    background-color: white;
+    width: 800px;
+    border-radius: 10px;
 }
 
 h1 {
-    color: white;
+    color: red;
+    text-align: center;
+}
+
+.pomodoro-section {
+    display: flex;
+    justify-content:space-around;
 }

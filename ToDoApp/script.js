@@ -37,7 +37,7 @@ function deleteItem() {
         taskArrayList.map((i) => {
             console.log('id',i)
             console.log('id',i.currId)
-            console.log(i.splice(i.indexOf(i.currId), 1))
+            i.splice(i.contain(i.currId), 1)
             
         })
         // console.log(classId)

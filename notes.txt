@@ -13,7 +13,10 @@ good practice:
 -use double exclamation to turn a number (0 or 1) into a boolean for conditions "!!"
 -when declaring variable for numbers that starts off empty, make it an empty string because it is easy to convert the string to a number in the code later on
 -commonly used array method: map & filter, find, reduce, splice
-
+-if/else statements should check if normal conditions are false first. so that you can handle the exceptions/special cases first. You want to check things out of the ordinary before going back to normal conditions.
+-if/else statements. False is more reliable because it is more obvious. A defintition can be false, or not false. In Programming, 0 is false, whereas 1 is true, but 2 would also be true. That's why we'd rather check for the absolute false, than for all the eventually not false cases.
+-if/else statement. if you check for true conditions first and they exist, it will exit the code and never find the false condition. where if we search for false conditions first and if there are none, it will then search for true conditions (true conditions are suppose to exist by default) and execute. "Before you eat a burger, you want to check if it doesn't contain poop first. if false, you don't eat. if true you eat"
+-if/else statement: checking for "false" is not a question performance, it's a question of Cyclomatic complexity. Let me make it clear: Imagine that you have to get 4 or 5 conditions true before you'd be able to make an action. This would be/get really complicated to understand. You should apply the "leave early" rule, by checking for "false" first. 
 ==========================================
 Troubleshooting
 1.	Comment out the parts that are not working

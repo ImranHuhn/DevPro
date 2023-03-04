@@ -5,6 +5,27 @@ const todoInput = document.querySelector('.todoapp-body__input');
 
 let taskArrayList = JSON.parse(localStorage.getItem('taskArrayList')) || [];
 
+function addItem() {
+    plusIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(todoInput.value !== '') {
+            const obj = {
+                currId: new Date(),
+                task: '',
+                complete: false
+            }
+
+            obj.task = todoInput.value;
+            todoInput.value = '';
+            
+            taskArrayList.push(obj);
+            localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
+            
+            render();
+        }
+    });
+};
+
 function render() {
     todoList.innerHTML = '';
     taskArrayList.forEach((item) => {
@@ -22,7 +43,6 @@ function render() {
         </li>`
     });
     
-    // delete item
     document.querySelectorAll('.garbage-icon').forEach(el => {
         el.addEventListener('click', () => {
             const uiId = el.id.replace('garbageId-', '');
@@ -33,7 +53,6 @@ function render() {
         });
     });
 
-    // check complete item
     document.querySelectorAll('.task').forEach(el => {
         el.addEventListener('click', () => {
             const uiId = el.id.replace('taskId', '');
@@ -54,25 +73,7 @@ function render() {
         });
     });
 
-    // add item
-    plusIcon.addEventListener('click', (e) => {
-        e.preventDefault();
-        if(todoInput.value !== '') {
-            const obj = {
-                currId: new Date(),
-                task: '',
-                complete: false
-            }
-
-            obj.task = todoInput.value;
-            todoInput.value = '';
-            
-            taskArrayList.push(obj);
-            localStorage.setItem('taskArrayList', JSON.stringify(taskArrayList));
-            
-            render();
-        }
-    });
+    addItem();
 };
 
 window.addEventListener('load', render);

@@ -31,7 +31,7 @@ function render() {
             case "completed":
                 toDoArrayList = toDoArrayList.sort((a,b) => b.completed - a.completed);
                 break;
-            default:
+            default: // sort by most recent
                 toDoArrayList = toDoArrayList.sort((a,b) => a.currId - b.currId);
                 break;
         }

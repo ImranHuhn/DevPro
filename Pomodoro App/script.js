@@ -26,22 +26,16 @@ function render() {
     el.addEventListener("click", () => {
         switch(el.id) {
             case "priority":
-                // console.log("pri")
-
-                toDoArrayList = toDoArrayList.sort((a,b) => {
-                    b.priority - a.priority
-                });
+                toDoArrayList = toDoArrayList.sort((a,b) => a.priority - b.priority);
                 render();
-
-                console.log(toDoArrayList)
                 break;
             case "completed":
-                toDoArrayList = toDoArrayList.filter((item) => item.completed === true)
+                toDoArrayList = toDoArrayList.sort((a,b) => b.completed - a.completed);
                 render();
                 break;
             default:
-                console.log("rec")
-                //recent here
+                toDoArrayList = toDoArrayList.sort((a,b) => a.currId - b.currId);
+                render();
                 break;
         }
     })
@@ -52,8 +46,8 @@ function render() {
   document.querySelectorAll(".delete-button").forEach((el) => {
     el.addEventListener("click", () => {
         
-        const uiId = el.id.replace("deleteId-", ""); // removed parseInt because it will only return a year ex: 2023. delete button won't work for next line
-        toDoArrayList = toDoArrayList.filter((item) => item.currId != uiId); 
+        const uiId = parseInt(el.id.replace("deleteId-", ""));
+        toDoArrayList = toDoArrayList.filter((item) => item.currId !== uiId); 
 
         localStorage.setItem("toDoArrayList", JSON.stringify(toDoArrayList));
         render();
@@ -64,10 +58,10 @@ function render() {
   // check completed item
   document.querySelectorAll(".task").forEach((el) => {
     el.addEventListener("click", () => {
-      const uiId = el.id.replace("taskId", "");
+      const uiId = parseInt(el.id.replace("taskId", ""));
 
       toDoArrayList = toDoArrayList.map((item) => {
-        if (item.currId == uiId) {
+        if (item.currId === uiId) {
           item.completed = !item.completed;
         }
         return item;
@@ -84,7 +78,7 @@ function render() {
     e.preventDefault();
     if (todoInput.value && todoPriority.value !== "") {
         const obj = {
-          currId: new Date(),
+          currId: new Date().getTime(),
           task: todoInput.value,
           completed: false,
           priority: todoPriority.value

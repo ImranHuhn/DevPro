@@ -59,3 +59,7 @@ li {
     align-items: center;
     padding-top: 24px;
 }
+
+.display-none {
+    display: none;
+}

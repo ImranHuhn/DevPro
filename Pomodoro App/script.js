@@ -1,5 +1,4 @@
 const plusButton = document.querySelector(".plus-button");
-const deleteButton = document.querySelector(".delete-button");
 const todoList = document.querySelector(".todoapp-body__list");
 const todoInput = document.querySelector(".todoapp-body__input");
 const todoPriority = document.querySelector(".todoapp-body__priority");
@@ -16,12 +15,12 @@ function render() {
             <input value="${item.task}" type="text" placeholder="Edit">
         </label>
         <button id="deleteId-${item.currId}" class="delete-button">Delete</button>
-        <button class="pmdr-button">PMDR</button>
+        <button class="pmdr-button" id="pmdrId-${item.currId}">PMDR</button>
     </li>`;
   });
 
 
-//   sort list by for ui only, not data
+  // sort list by for ui only, not data
   document.querySelectorAll(".sort-list").forEach((el) => {
     el.addEventListener("click", () => {
         switch(el.id) {
@@ -91,13 +90,52 @@ function render() {
         render();
     }
   });
-}
+
+  // pmdr button
+  document.querySelectorAll(".pmdr-button").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      
+      const pmdrId = parseInt(e.target.id.replace("pmdrId-", "")); // html id
+      
+      toDoArrayList.map((item) => { // data id
+        if(item.currId !== pmdrId) return;
+        pomodoroTitle.innerHTML = `<h2>Working on: ${item.task}</h2>`;
+        pomodoroComment.classList.remove("display-none");
+      })
+    });
+  });
+
+};
 
 window.addEventListener("load", render);
 
 //////////////////////////////////////////
 // pomodoro section
+const pomodoroTitle = document.querySelector(".pomodoro-title");
+const pomodoroComment = document.querySelector(".pomodoro-timer__comments");
+const startButton = document.querySelector(".pomodoro-timer__start-button");
 
-function pomodoroSetUp() {
-    
-}
+// start button for pomodoro
+startButton.addEventListener("click", () => {
+  console.log("clicked start")
+});
+
+
+// while the start button is active, cycle between 25 min pododoro and 5 short breaks infinitely
+// for every 4 rounds, do 15 min long breaks
+
+//////////////
+
+// reset button >pomodoro section
+
+// edit "pomodoro:" >pomodoro section
+
+// edit "short break:" >pomodoro section
+
+// edit "long break:" >pomodoro section
+
+// edit "pomodoro rounds:" >pomodoro section
+
+// count down timer "25:00" >pomodoro section
+
+// edit task name >todo section

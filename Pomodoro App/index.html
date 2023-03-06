@@ -14,9 +14,9 @@
         </section>
         <section class="pomodoro-section">
             <div class="pomodoro-container">
-                <!-- this appears when clicking on PMDR button on to do task list -->
-                <!-- <h2>Working on: "name of task from the list"</h2>  -->
-                <h2>"PMDR" a task and press Start!</h2>
+                <div class="pomodoro-title">
+                    <h2>"PMDR" a task and press Start!</h2>
+                </div>
                 <div>
                     <h3 class="text-center">Pomodoro:</h3>
                     <label class="flex" for="pomodoro-total">
@@ -42,13 +42,12 @@
                     </label>
                 </div>
                 <div>
-                    <!--when timer start, this appears-->
-                    <!-- <h3>Time to work!</h3>  -->
+                    <h3 class="pomodoro-timer__comments display-none text-center">Ready?</h3>
                     <h2 class="pomodoro-timer text-center">25:00</h2>
                     <div class="flex">
                         <!-- <button>pause</button> -->
-                        <button>start</button>
-                        <button>reset</button>
+                        <button class="pomodoro-timer__start-button">start</button>
+                        <button class="pomodoro-timer__reset-button">reset</button>
                     </div>
                 </div>
             </div>

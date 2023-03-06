@@ -97,6 +97,4 @@ window.addEventListener("load", render);
 //////////////////////////////////////////
 // pomodoro section
 
-function pomodoroSetUp() {
-    
-}
+

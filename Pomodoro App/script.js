@@ -27,17 +27,15 @@ function render() {
         switch(el.id) {
             case "priority":
                 toDoArrayList = toDoArrayList.sort((a,b) => a.priority - b.priority);
-                render();
                 break;
             case "completed":
                 toDoArrayList = toDoArrayList.sort((a,b) => b.completed - a.completed);
-                render();
                 break;
             default:
                 toDoArrayList = toDoArrayList.sort((a,b) => a.currId - b.currId);
-                render();
                 break;
         }
+        render();
     })
   })
 
@@ -98,6 +96,9 @@ function render() {
 window.addEventListener("load", render);
 
 //////////////////////////////////////////
-document.querySelector(".test").addEventListener("click", () => {
-    console.log(document.querySelector(".sort-by-recent").checked)
-})
+// pomodoro section
+
+
+
+
+

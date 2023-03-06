@@ -2,6 +2,7 @@ const plusButton = document.querySelector(".plus-button");
 const todoList = document.querySelector(".todoapp-body__list");
 const todoInput = document.querySelector(".todoapp-body__input");
 const todoPriority = document.querySelector(".todoapp-body__priority");
+const inputInTodoList = document.querySelector(".input-in-todolist");
 
 let toDoArrayList = JSON.parse(localStorage.getItem("toDoArrayList")) || [];
 
@@ -12,13 +13,12 @@ function render() {
     <li>
         <label for="task">
             <input id="taskId${item.currId}" class="task" type="checkbox" ${item.completed === true ? `checked="checked"` : ``}>
-            <input value="${item.task}" type="text" placeholder="Edit">
+            <input class="input-in-todolist" value="${item.task}" type="text" placeholder="Edit">
         </label>
         <button id="deleteId-${item.currId}" class="delete-button">Delete</button>
         <button class="pmdr-button" id="pmdrId-${item.currId}">PMDR</button>
     </li>`;
   });
-
 
   // sort list by for ui only, not data
   document.querySelectorAll(".sort-list").forEach((el) => {
@@ -86,7 +86,6 @@ function render() {
     
         toDoArrayList.push(obj);
         localStorage.setItem("toDoArrayList", JSON.stringify(toDoArrayList));
-    
         render();
     }
   });

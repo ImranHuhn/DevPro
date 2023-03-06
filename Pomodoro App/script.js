@@ -16,7 +16,7 @@ function render() {
             <input value="${item.task}" type="text" placeholder="Edit">
         </label>
         <button id="deleteId-${item.currId}" class="delete-button">Delete</button>
-        <button>PMDR</button>
+        <button class="pmdr-button">PMDR</button>
     </li>`;
   });
 
@@ -36,8 +36,8 @@ function render() {
                 break;
         }
         render();
-    })
-  })
+    });
+  });
 
 
   // delete item
@@ -98,7 +98,6 @@ window.addEventListener("load", render);
 //////////////////////////////////////////
 // pomodoro section
 
-
-
-
-
+function pomodoroSetUp() {
+    
+}

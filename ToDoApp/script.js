@@ -25,8 +25,8 @@ function render() {
   // delete item
   document.querySelectorAll(".garbage-icon").forEach((el) => {
     el.addEventListener("click", () => {
-      const uiId = parseInt(el.id.replace("garbageId-", ""));
-      taskArrayList = taskArrayList.filter((item) => item.currId !== uiId); // make sure the typeof is the same in order to use !== which is preferred.
+      const uiId = el.id.replace("garbageId-", ""); // I removed parseInt here
+      taskArrayList = taskArrayList.filter((item) => item.currId != uiId); // make sure the typeof is the same in order to use !== which is preferred. hovever, i removed parseInt because it will return a year ex: 2023. delete button won't work for next line
 
       localStorage.setItem("taskArrayList", JSON.stringify(taskArrayList));
       render();
@@ -53,7 +53,7 @@ function render() {
   // add item
   plusIcon.addEventListener("click", (e) => {
     e.preventDefault();
-    if (todoInput.value === "") return; // if condition is false, execute all lines after this
+    if (todoInput.value === "") return; // if condition is true, don't return anything. if condition is false, execute all lines after this
     const obj = {
       currId: new Date(),
       task: todoInput.value,

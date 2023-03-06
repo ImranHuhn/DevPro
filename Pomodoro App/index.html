@@ -54,43 +54,40 @@
             </div>
             <div>
                 <div class="add-todo flex">
-                    <button>+</button>
-                    <label for="">
-                        <input type="text" placeholder="Create a new To-Do...">
-                    </label>
-                    <select name="" id="">
-                        <option value="">Priority...</option>
-                        <option value="">High</option>
-                        <option value="">Medium</option>
-                        <option value="">Low</option>
-                    </select>
+                    <form action="">
+                        <button class="plus-button">+</button>
+                        <label for="todoapp-body__input">
+                            <input class="todoapp-body__input" type="text" placeholder="Create a new To-Do...">
+                        </label>
+                        <select name="todoapp-body__priority" class="todoapp-body__priority">
+                            <option value="" disabled selected>Priority...</option>
+                            <option value="1">High</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Low</option>
+                        </select>
+                    </form>
                 </div>
                 <div>
                     <h3 class="text-center">Sort list by:</h3>
                     <div class="flex">
-                        <label for="">
-                            <input type="radio">Most recent
+                        <label for="sort-list__recent">
+                            <input id="recent" class="sort-list sort-list__recent" checked name="sort" type="radio">Most recent
                         </label>
-                        <label for="">
-                            <input type="radio">Priority
+                        <label for="sort-list__priority">
+                            <input id="priority" class="sort-list sort-list__priority" name="sort" type="radio">Priority
                         </label>
-                        <label for="">
-                            <input type="radio">Completed
+                        <label for="sort-list__completed">
+                            <input id="completed" class="sort-list sort-list__completed" name="sort" type="radio">Completed
                         </label>
                     </div>
                 </div>
                 <div class="todo-list flex">
-                    <label for="">
-                        <input type="checkbox" name="" id="">
-                        <input type="text" placeholder="Edit">
-                    </label>
-                    <button>Done</button>
-                    <button>Delete</button>
-                    <button>PMDR</button>
+                    <ul class="todoapp-body__list"></ul>
                 </div>
             </div>
         </section>
     </main>
+    <button class="test">test</button>
     <script src="./script.js"></script>
 </body>
 </html>

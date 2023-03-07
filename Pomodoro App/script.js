@@ -175,7 +175,9 @@ startButton.addEventListener("click", () => {
     startSeconds()
     
     const interval = setInterval(() => {
+      
       resetBtn(interval);
+      
       if(seconds > 0) {
         startSeconds()
       } else if (long !== 0 && seconds === 0) {
@@ -197,7 +199,9 @@ startButton.addEventListener("click", () => {
     startSeconds()
     
     const interval = setInterval(() => {
+      
       resetBtn(interval);
+      
       if(seconds > 0) {
         startSeconds()
       } else if (short !== 0 && seconds === 0) {
@@ -222,7 +226,9 @@ startButton.addEventListener("click", () => {
     startSeconds()
     
     const interval = setInterval(() => {
+      
       resetBtn(interval);
+      
       if(seconds > 0) {
         startSeconds()
       } else if (pomodoro !== 0 && seconds === 0) {
@@ -262,7 +268,7 @@ startButton.addEventListener("click", () => {
     })
   }
   
-  
+  //pausing
   if(!startButton.classList.contains("active")) {
     startButton.classList.add("active");
     startButton.innerText = "pause";
@@ -279,6 +285,6 @@ startButton.addEventListener("click", () => {
 
 // todo:
   //pause pomodoro
-    // subtract min and seconds from the reset and save into variable
+    // clear interval then subtract min and seconds then save into variable
 
 

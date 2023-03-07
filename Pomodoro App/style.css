@@ -63,3 +63,8 @@ li {
 .display-none {
     display: none;
 }
+
+.active {
+    color: white;
+    background-color: red;
+}

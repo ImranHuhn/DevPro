@@ -113,172 +113,107 @@ window.addEventListener("load", render);
 
 //////////////////////////////////////////
 // pomodoro section
-
 const pomodoroTitle = document.querySelector(".pomodoro-title");
 const pomodoroComment = document.querySelector(".pomodoro-timer__comments");
-const pomodoroCurrentCycle = document.querySelector(".pomodoro-timer__cycle");
 const startButton = document.querySelector(".pomodoro-timer__start-button");
-const resetButton = document.querySelector(".pomodoro-timer__reset-button");
 const timerDisplay = document.querySelector(".pomodoro-timer");
-const pomodoroInput = document.querySelector("#pomodoro-total");
-const shortBreakInput = document.querySelector("#short-break");
-const longBreakInput = document.querySelector("#long-break");
-const roundsInput = document.querySelector("#pomodoro-rounds");
 
-
-
-
+// start button for pomodoro
 startButton.addEventListener("click", () => {
-
   const resetSeconds = 60;
-  const resetPomodoro = (pomodoroInput.value !== "" ? parseInt(pomodoroInput.value) : 25);
-  const resetShort = (shortBreakInput.value !== "" ? parseInt(shortBreakInput.value) : 5);
-  const resetLong = (longBreakInput.value !== "" ? parseInt(longBreakInput.value) : 15);
-  const resetRounds = (roundsInput.value !== "" ? parseInt(roundsInput.value) : 4);
+  const resetPomodoro = 2;
+  const resetShort = 2;
+  const resetLong = 2;
+  const resetRounds = 2;
   let seconds = resetSeconds;
   let pomodoro = resetPomodoro;
   let short = resetShort;
   let long = resetLong;
   let rounds = resetRounds;
-
-
-  function startTimerWith(timer) {
-    pomoMinutes.innerText = (timer <= 10 ? "0" + timer : timer);
+  
+function breaks() {
+  if(rounds > 0) {
+    shortBreak();
+  } else {
+    rounds = resetRounds;
+    longBreak();
   }
+}
 
+  totalPomodoro();
 
-  function startSeconds() {
-    pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
-  }
-
-
-  function resetSecondsAndInterval(intervalName) {
-    seconds = resetSeconds;
-    clearInterval(intervalName);
-  }
-
-
-  function breaks() {
-    if(rounds > 0) {
-      shortBreak();
-    } else {
-      rounds = resetRounds;
-      longBreak();
-    }
-  };
-
-
-  function longBreak() {
-    pomodoroCurrentCycle.innerText = "Long Break"
+  function totalPomodoro() {
+    console.log("total")
     
-    startTimerWith(--long);
-    startSeconds()
+    pomoMinutes.innerText = (pomodoro <= 10 ? "0" + --pomodoro : --pomodoro);
+    pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
     
     const interval = setInterval(() => {
-      resetBtn(interval);
       if(seconds > 0) {
-        startSeconds()
-      } else if (long !== 0 && seconds === 0) {
-        resetSecondsAndInterval(interval);
-        longBreak();
-      } else {
-        resetSecondsAndInterval(interval);
-        long = resetLong;
+        pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
+      } else if (pomodoro !== 0 && seconds === 0) {
+        seconds = resetSeconds;
+        clearInterval(interval);
         totalPomodoro();
+      } else {
+        rounds--;
+        console.log(rounds);
+        seconds = resetSeconds;
+        pomodoro = resetPomodoro;
+        clearInterval(interval);
+        breaks()
       }
-    }, 100);
+    }, 1000);
   };
 
 
   function shortBreak() {
-    pomodoroCurrentCycle.innerText = "Short Break"
     
-    startTimerWith(--short);
-    startSeconds()
+    console.log('short')
+    
+    pomoMinutes.innerText = (short <= 10 ? "0" + --short : --short);
+    pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
     
     const interval = setInterval(() => {
-      resetBtn(interval);
       if(seconds > 0) {
-        startSeconds()
+        pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
       } else if (short !== 0 && seconds === 0) {
-        resetSecondsAndInterval(interval);
+        seconds = resetSeconds;
+        clearInterval(interval);
         shortBreak();
       } else {
-        resetSecondsAndInterval(interval);
+        seconds = resetSeconds;
         short = resetShort;
+        clearInterval(interval);
         totalPomodoro();
       }
-    }, 100);
+    }, 1000);
   };
 
 
-  function totalPomodoro() {
-    pomodoroComment.classList.remove("display-none");
-    pomodoroComment.innerText = "Time to work!"
-    pomodoroCurrentCycle.classList.remove("display-none");
-    pomodoroCurrentCycle.innerText = "Rounds Left: " + rounds;
+  function longBreak() {
+
+    console.log('long')
     
-    startTimerWith(--pomodoro);
-    startSeconds()
+    pomoMinutes.innerText = (long <= 10 ? "0" + --long : --long);
+    pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
     
     const interval = setInterval(() => {
-      resetBtn(interval);
       if(seconds > 0) {
-        startSeconds()
-      } else if (pomodoro !== 0 && seconds === 0) {
-        resetSecondsAndInterval(interval);
-        totalPomodoro();
+        pomoSeconds.innerText = (seconds <= 10 ? "0" + --seconds : --seconds);
+      } else if (long !== 0 && seconds === 0) {
+        seconds = resetSeconds;
+        clearInterval(interval);
+        longBreak();
       } else {
-        resetSecondsAndInterval(interval);
-        rounds--;
-        pomodoro = resetPomodoro;
-        breaks()
+        seconds = resetSeconds;
+        long = resetLong;
+        clearInterval(interval);
+        totalPomodoro();
       }
-    }, 100);
+    }, 1000);
   };
 
 
-  function resetBtn(intervalName) {
-    resetButton.addEventListener("click", () => {
-      
-      pomodoro = resetPomodoro;
-      short = resetShort;
-      long = resetLong;
-      rounds = resetRounds;
-      
-      pomodoroComment.classList.add("display-none");
-      pomodoroCurrentCycle.classList.add("display-none");
-      startButton.classList.remove("active");
-      
-      pomoMinutes.innerText = 25;
-      pomoSeconds.innerText = "00";
-      startButton.innerText = "start";
-      pomodoroInput.value = "";
-      shortBreakInput.value = "";
-      longBreakInput.value = "";
-      roundsInput.value = "";
-      
-      clearInterval(intervalName);
-    })
-  }
-  
-  
-  if(!startButton.classList.contains("active")) {
-    startButton.classList.add("active");
-    startButton.innerText = "pause";
-  } else {
-    startButton.classList.remove("active");
-    startButton.innerText = "start";
-  }
-    
-  
-  totalPomodoro();
 });
-
-
-
-// todo:
-  //pause pomodoro
-    // subtract min and seconds from the reset and save into variable
-
 

@@ -126,8 +126,6 @@ const longBreakInput = document.querySelector("#long-break");
 const roundsInput = document.querySelector("#pomodoro-rounds");
 
 
-
-
 startButton.addEventListener("click", () => {
 
   const resetSeconds = 60;
@@ -172,14 +170,15 @@ startButton.addEventListener("click", () => {
     pomodoroCurrentCycle.innerText = "Long Break"
     
     startTimerWith(--long);
-    startSeconds()
+    startSeconds();
     
     const interval = setInterval(() => {
       
+      pauseBtn(interval);
       resetBtn(interval);
       
       if(seconds > 0) {
-        startSeconds()
+        startSeconds();
       } else if (long !== 0 && seconds === 0) {
         resetSecondsAndInterval(interval);
         longBreak();
@@ -196,14 +195,15 @@ startButton.addEventListener("click", () => {
     pomodoroCurrentCycle.innerText = "Short Break"
     
     startTimerWith(--short);
-    startSeconds()
+    startSeconds();
     
     const interval = setInterval(() => {
       
+      pauseBtn(interval);
       resetBtn(interval);
       
       if(seconds > 0) {
-        startSeconds()
+        startSeconds();
       } else if (short !== 0 && seconds === 0) {
         resetSecondsAndInterval(interval);
         shortBreak();
@@ -223,14 +223,15 @@ startButton.addEventListener("click", () => {
     pomodoroCurrentCycle.innerText = "Rounds Left: " + rounds;
     
     startTimerWith(--pomodoro);
-    startSeconds()
+    startSeconds();
     
     const interval = setInterval(() => {
       
+      pauseBtn(interval);
       resetBtn(interval);
       
       if(seconds > 0) {
-        startSeconds()
+        startSeconds();
       } else if (pomodoro !== 0 && seconds === 0) {
         resetSecondsAndInterval(interval);
         totalPomodoro();
@@ -238,7 +239,7 @@ startButton.addEventListener("click", () => {
         resetSecondsAndInterval(interval);
         rounds--;
         pomodoro = resetPomodoro;
-        breaks()
+        breaks();
       }
     }, 100);
   };
@@ -269,15 +270,26 @@ startButton.addEventListener("click", () => {
   }
   
   //pausing
-  if(!startButton.classList.contains("active")) {
-    startButton.classList.add("active");
-    startButton.innerText = "pause";
-  } else {
-    startButton.classList.remove("active");
-    startButton.innerText = "start";
-  }
-    
+  // if(!startButton.classList.contains("active")) {
+  //   startButton.classList.add("active");
+  //   startButton.innerText = "pause";
+  // } else {
+  //   startButton.classList.remove("active");
+  //   startButton.innerText = "start";
+  // }
+  const pauseButton = document.querySelector(".pomodoro-timer__pause-button");  
+
+  startButton.classList.add("display-none");
+  pauseButton.classList.remove("display-none");
   
+  function pauseBtn(intervalName) {
+    pauseButton.addEventListener("click", () => {
+      startButton.classList.remove("display-none");
+      pauseButton.classList.add("display-none");
+      clearInterval(intervalName);
+    })
+  }
+
   totalPomodoro();
 });
 

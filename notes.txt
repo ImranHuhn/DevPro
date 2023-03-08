@@ -1,3 +1,8 @@
+
+-data is just objects and arrays. like an excel spreadsheet, objects are array, columns are properties, and the entire spreadsheet is the array
+-for setIntervals, create a variable in the global scope to have access globally. then initialize the global variable in a function and you can use clearInterval anywhere in the code globally or within a function.
+=====================================
+
 react:
 -props should be used maximum 3 levels. of component, not including itself when setting up
 
@@ -19,6 +24,7 @@ good practice:
 -if/else statement: checking for "false" is not a question performance, it's a question of Cyclomatic complexity. Let me make it clear: Imagine that you have to get 4 or 5 conditions true before you'd be able to make an action. This would be/get really complicated to understand. You should apply the "leave early" rule, by checking for "false" first. 
 -if/else statements. exceptions must be handled first
 -conditions like if/else should not include the ui, it should be determined/compared by the data
+
 ==========================================
 Troubleshooting
 1.	Comment out the parts that are not working

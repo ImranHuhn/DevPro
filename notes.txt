@@ -1,3 +1,7 @@
+
+-data is just objects and arrays. like an excel spreadsheet, objects are array, columns are properties, and the entire spreadsheet is the array
+=====================================
+
 react:
 -props should be used maximum 3 levels. of component, not including itself when setting up
 

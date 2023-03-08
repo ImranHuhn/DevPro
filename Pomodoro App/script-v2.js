@@ -118,7 +118,6 @@ const pomodoroTitle = document.querySelector(".pomodoro-title");
 const pomodoroComment = document.querySelector(".pomodoro-timer__comments");
 const pomodoroCurrentCycle = document.querySelector(".pomodoro-timer__cycle");
 const startButton = document.querySelector(".pomodoro-timer__start-button");
-const pauseButton = document.querySelector(".pomodoro-timer__pause-button");  
 const resetButton = document.querySelector(".pomodoro-timer__reset-button");
 const timerDisplay = document.querySelector(".pomodoro-timer");
 const pomodoroInput = document.querySelector("#pomodoro-total");
@@ -140,11 +139,7 @@ startButton.addEventListener("click", () => {
   let long = resetLong;
   let rounds = resetRounds;
 
-  
-  startButton.classList.add("display-none");
-  pauseButton.classList.remove("display-none");
 
-  
   function startTimerWith(timer) {
     pomoMinutes.innerText = (timer <= 10 ? "0" + timer : timer);
   }
@@ -275,6 +270,17 @@ startButton.addEventListener("click", () => {
     })
   }
   
+  //pausing
+  // if(!startButton.classList.contains("active")) {
+  //   startButton.classList.add("active");
+  //   startButton.innerText = "pause";
+  // } else {
+  //   startButton.classList.remove("active");
+  //   startButton.innerText = "start";
+  // }
+  const pauseButton = document.querySelector(".pomodoro-timer__pause-button");  
+  startButton.classList.add("display-none");
+  pauseButton.classList.remove("display-none");
   
   function pauseBtn(intervalName) {
     pauseButton.addEventListener("click", () => {
@@ -285,7 +291,6 @@ startButton.addEventListener("click", () => {
   }
 
   totalPomodoro();
-  
 });
 
 

@@ -255,7 +255,8 @@ startButton.addEventListener("click", () => {
       
       pomodoroComment.classList.add("display-none");
       pomodoroCurrentCycle.classList.add("display-none");
-      startButton.classList.remove("active");
+      startButton.classList.remove("display-none");
+      pauseButton.classList.add("display-none");
       
       pomoMinutes.innerText = 25;
       pomoSeconds.innerText = "00";
@@ -278,7 +279,6 @@ startButton.addEventListener("click", () => {
   //   startButton.innerText = "start";
   // }
   const pauseButton = document.querySelector(".pomodoro-timer__pause-button");  
-
   startButton.classList.add("display-none");
   pauseButton.classList.remove("display-none");
   
@@ -294,9 +294,6 @@ startButton.addEventListener("click", () => {
 });
 
 
-
 // todo:
   //pause pomodoro
     // clear interval then subtract min and seconds then save into variable
-
-

@@ -23,7 +23,7 @@ function render() {
     </li>`;
   });
 
-  // sort list by for ui only, not data
+  // "sort list by" for ui only, not data
   document.querySelectorAll(".sort-list").forEach((el) => {
     el.addEventListener("click", () => {
         switch(el.id) {

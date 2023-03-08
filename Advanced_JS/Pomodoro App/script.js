@@ -286,5 +286,3 @@ startButton.addEventListener("click", () => {
 // todo:
   //pause pomodoro
     // clear interval then subtract min and seconds then save into variable
-
-

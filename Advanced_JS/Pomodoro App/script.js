@@ -105,8 +105,9 @@ function render() {
 
 window.addEventListener("load", render);
 
-//////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 // pomodoro section
+////////////////////////////////////////////////////////////////////////////////////////
 
 const pomodoroTitle = document.querySelector(".pomodoro-title");
 const pomodoroComment = document.querySelector(".pomodoro-timer__comments");
@@ -122,23 +123,55 @@ const roundsInput = document.querySelector("#pomodoro-rounds");
 const pomoMinutes = document.querySelector(".pomodoro-minutes");
 const pomoSeconds = document.querySelector(".pomodoro-seconds");
 const resetSeconds = 60;
-let resetRounds;
 let seconds = resetSeconds; 
-let rounds;
+let resetRounds;
 let aPomodoro; 
+let interval;
+let rounds;
 let short; 
 let long;
-let interval;
 
+// displays minutes and seconds in ui
 function formatTimer() {
   pomoMinutes.innerText = Math.floor(totalSeconds / seconds).toString().padStart(2,"0");
   pomoSeconds.innerText = (totalSeconds % seconds).toString().padStart(2,"0");
 }
 
+// shows start button after pressing pause or reset
+function displayStartButton() {
+  startButton.classList.remove("display-none");
+  pauseButton.classList.add("display-none");
+  clearInterval(interval);
+}
+
+// initial setup, inother words reset
+function preset() {
+  aPomodoro = (pomodoroInput.value !== "" ? parseInt(pomodoroInput.value) : 25);
+  short = (shortBreakInput.value !== "" ? parseInt(shortBreakInput.value) : 5);
+  long = (longBreakInput.value !== "" ? parseInt(longBreakInput.value) : 15);
+  resetRounds = (roundsInput.value !== "" ? parseInt(roundsInput.value) : 4);
+  rounds = resetRounds;
+
+  pomodoroComment.classList.add("display-none");
+  pomodoroCurrentCycle.classList.add("display-none");
+
+  pomodoroInput.value = "";
+  shortBreakInput.value = "";
+  longBreakInput.value = "";
+  roundsInput.value = "";
+  pomoMinutes.innerText = 25;
+  pomoSeconds.innerText = "00";
+
+  displayStartButton()
+}
+
+// executes pomodoro that is default to 25 minutes if no input when start button is pressed
 function pomodoro() {
+  startButton.classList.add("display-none");
+  pauseButton.classList.remove("display-none");
   pomodoroComment.classList.remove("display-none");
-  pomodoroComment.innerText = "Time to work!";
   pomodoroCurrentCycle.classList.remove("display-none");
+  pomodoroComment.innerText = "Time to work!";
   pomodoroCurrentCycle.innerText = "Rounds Left: " + rounds;
   
   totalSeconds = aPomodoro * seconds;
@@ -157,16 +190,19 @@ function pomodoro() {
   }, 100);
 };
 
+// this will only be used in pomodoro function to determine which break is executed.
+// made this because when rounds are done, short break moves on to long break which is a total of 20 min with defalt
 function breakManager() {
   if(rounds > 0) {
-    breakType(short, "Short Break");
+    breakTimer(short, "Short Break");
   } else {
     rounds = resetRounds;
-    breakType(long, "Long Break");
+    breakTimer(long, "Long Break");
   }
 };
 
-function breakType(type, text) {
+// function for short break(5 min default) and long break(15 min default) unless either of the input is filled when start is pressed
+function breakTimer(type, text) {
   pomodoroCurrentCycle.innerText = text;
   
   totalSeconds = type * seconds;
@@ -184,54 +220,34 @@ function breakType(type, text) {
   }, 100);
 }
 
+// when start button is pressed, it will call preset that collect input if any or sets to default.
+// then starts pomodoro's timer with some text changes in ui
 startButton.addEventListener("click", () => {
-  aPomodoro = (pomodoroInput.value !== "" ? parseInt(pomodoroInput.value) : 25);
-  short = (shortBreakInput.value !== "" ? parseInt(shortBreakInput.value) : 5);
-  long = (longBreakInput.value !== "" ? parseInt(longBreakInput.value) : 15);
-  resetRounds = (roundsInput.value !== "" ? parseInt(roundsInput.value) : 4);
-  rounds = resetRounds;
-
-  startButton.classList.add("display-none");
-  pauseButton.classList.remove("display-none");
-
+  preset();
   pomodoro();
-
-  return resetRounds;
 });
 
+// if pause is pressed first and reset is pressed after, start button will be visible from display start button function
+// after reset is pressed, it calls preset to reset everything as if start button was never pressed
 resetButton.addEventListener("click", () => {
-  startButton.classList.remove("display-none");
-  pauseButton.classList.add("display-none");
-  clearInterval(interval);
-})
-pauseButton.addEventListener("click", () => {
-  startButton.classList.remove("display-none");
-  pauseButton.classList.add("display-none");
-  clearInterval(interval);
+  displayStartButton();
+  preset();
 })
 
-// function resetBtn() {
-//   resetButton.addEventListener("click", () => {
-    
-//     pomodoro = resetPomodoro;
-//     short = resetShort;
-//     long = resetLong;
-//     rounds = resetRounds;
-    
-//     pomodoroComment.classList.add("display-none");
-//     pomodoroCurrentCycle.classList.add("display-none");
-//     startButton.classList.remove("display-none");
-//     pauseButton.classList.add("display-none");
-    
-//     pomoMinutes.innerText = 25;
-//     pomoSeconds.innerText = "00";
-//     startButton.innerText = "start";
-//     pomodoroInput.value = "";
-//     shortBreakInput.value = "";
-//     longBreakInput.value = "";
-//     roundsInput.value = "";
-    
-//     clearInterval(interval);
-//   })
-// }
+/////////////////////////
+// pause section
 
+let pausedSec;
+
+pausedSec = pauseButton.addEventListener("click", () => {
+  const pausedAt = totalSeconds
+  console.log(pausedAt)
+  clearInterval(interval)
+  displayStartButton();
+  return pausedAt
+})
+
+
+// stop the interval
+// reset the seconds for pause
+// start the pause interval

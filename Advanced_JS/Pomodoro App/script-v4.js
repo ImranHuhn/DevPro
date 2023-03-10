@@ -132,7 +132,6 @@ let rounds;
 let short; 
 let long;
 
-let pomodoroStatus = true;
 let pressedPause = false;
 let pausedSeconds;
 
@@ -159,26 +158,29 @@ function captureInputs() {
 }
 
 function calculateTotalSeconds(type) {
-  totalSeconds = (pressedPause === true ? totalSeconds = parseInt(pausedSeconds) : totalSeconds = parseInt(type * seconds));
-  pressedPause = false;
+  totalSeconds = (pressedPause === true ? totalSeconds = pausedSeconds : totalSeconds = type * seconds);
 }
 
 // initial setup/resets for UI
 function preset() {
+  pressedPause = false;
+
   pomodoroComment.classList.add("display-none");
   pomodoroCurrentCycle.classList.add("display-none");
+
   pomodoroInput.value = "";
   shortBreakInput.value = "";
   longBreakInput.value = "";
   roundsInput.value = "";
   pomoMinutes.innerText = "00";
   pomoSeconds.innerText = "00";
+
   displayStartButton();
 };
 
 function pause() {
   pressedPause = true;
-  pausedSeconds = parseInt(totalSeconds);
+  pausedSeconds = totalSeconds;
   clearInterval(interval);
 };
 
@@ -186,40 +188,53 @@ function pause() {
 // made this because when rounds are done, short break moves on to long break which is a total of 20 min with defalt
 function breakManager() {
   if(rounds > 0) {
-    timer(short, "Short Break");
+    breakTimer(short);
   } else {
     rounds = resetRounds;
-    timer(long, "Long Break");
+    breakTimer(long);
   }
 };
 
-function timer(type, text) {
-  if(pomodoroStatus !== true) {
-    pomodoroCurrentCycle.innerText = text;
-    calculateTotalSeconds(type);
-  } else {
-    startButton.classList.add("display-none");
-    pauseButton.classList.remove("display-none");
-    pomodoroComment.classList.remove("display-none");
-    pomodoroCurrentCycle.classList.remove("display-none");
-    pomodoroComment.innerText = "Time to work!";
-    pomodoroCurrentCycle.innerText = "Rounds Left: " + rounds;
-    calculateTotalSeconds(aPomodoro);
-  }
+// function for short break(5 min default) and long break(15 min default) unless either of the input is filled when start is pressed
+function breakTimer(type) {
+  pomodoroCurrentCycle.innerText = "Break";
+
+  calculateTotalSeconds(type);
   
   interval = setInterval(() => {
+
     totalSeconds--;
-    if(totalSeconds < 0 && pomodoroStatus !== true) {
-      pomodoroStatus = true;
+
+    if(totalSeconds >= 0) {
+      formatTimer();
+    } else {
       clearInterval(interval);
-      timer(aPomodoro);
-    } else if(totalSeconds < 0 && pomodoroStatus === true) {
+      pomodoro();
+    }
+  }, 100);
+};
+
+// executes pomodoro that is default to 25 minutes if no input when start button is pressed
+function pomodoro() {
+  startButton.classList.add("display-none");
+  pauseButton.classList.remove("display-none");
+  pomodoroComment.classList.remove("display-none");
+  pomodoroCurrentCycle.classList.remove("display-none");
+  pomodoroComment.innerText = "Time to work!";
+  pomodoroCurrentCycle.innerText = "Rounds Left: " + rounds;
+  
+  calculateTotalSeconds(aPomodoro);
+  
+  interval = setInterval(() => {
+    
+    totalSeconds--;
+    
+    if(totalSeconds >= 0) {
+      formatTimer();
+    } else {
       rounds--;
-      pomodoroStatus = false;
       clearInterval(interval);
       breakManager();
-    } else {
-      formatTimer();
     }
   }, 100);
 };
@@ -228,7 +243,7 @@ function timer(type, text) {
 // then starts pomodoro's timer with some text changes in ui
 startButton.addEventListener("click", () => {
   captureInputs();
-  timer();
+  pomodoro();
 });
 
 // if pause is pressed first and reset is pressed after, start button will be visible from display start button function

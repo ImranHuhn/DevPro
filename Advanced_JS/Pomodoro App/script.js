@@ -129,6 +129,9 @@ const pomoSeconds = document.querySelector(".pomodoro-seconds");
 
 const resetSeconds = 60;
 let secondsInAMinute = resetSeconds;
+let isBreak = false;
+let isPause = false;
+let pausedSeconds;
 let resetRounds;
 let aPomodoro;
 let aShortBreak;
@@ -136,9 +139,6 @@ let aLongBreak;
 let timerInterval;
 let roundsLeft;
 let totalSeconds;
-let isBreak = false;
-let pressedPause = false;
-let pausedSeconds;
 
 startButton.addEventListener("click", () => {
   getInputOrDefaultValues();
@@ -149,10 +149,9 @@ function getInputOrDefaultValues() {
   aPomodoro = pomodoroInput.value !== "" ? parseInt(pomodoroInput.value) : 1;
   aShortBreak =
     shortBreakInput.value !== "" ? parseInt(shortBreakInput.value) : 2;
-  aLongBreak =
-    longBreakInput.value !== "" ? parseInt(longBreakInput.value) : 3;
+  aLongBreak = longBreakInput.value !== "" ? parseInt(longBreakInput.value) : 3;
   resetRounds = roundsInput.value !== "" ? parseInt(roundsInput.value) : 3;
-  roundsLeft = pressedPause ? roundsLeft : resetRounds;
+  roundsLeft = isPause ? roundsLeft : resetRounds - 1;
 }
 
 function startTimerFor(type) {
@@ -160,9 +159,10 @@ function startTimerFor(type) {
   timerInterval = setInterval(() => {
     totalSeconds--;
     if (isBeforeFinalPomodoro()) {
-      breakTimerFor(aShortBreak)
+      breakTimerFor(aShortBreak);
     } else if (isAfterFinalPomodoro()) {
-      breakTimerFor(aLongBreak)
+      roundsLeft = resetRounds;
+      breakTimerFor(aLongBreak);
     } else if (isAfterAnyBreak()) {
       isBreak = false;
       clearInterval(timerInterval);
@@ -174,18 +174,23 @@ function startTimerFor(type) {
 }
 
 function displayTimerFor(type) {
-    if (isBreak) {
-    displayPauseButton()
+  if (isBreak === true) {
+    displayPauseButton();
     pomodoroCurrentCycle.innerText = "Break Time";
     getTotalSecondsFor(type);
   } else {
-    displayPauseButton()
+    displayPauseButton();
     pomodoroComment.classList.remove("display-none");
     pomodoroCurrentCycle.classList.remove("display-none");
     pomodoroComment.innerText = "Time to work!";
-    pomodoroCurrentCycle.innerText = "Rounds Left: " + roundsLeft;
+    pomodoroCurrentCycle.innerText = "Round: " + (roundsLeft + 1);
     getTotalSecondsFor(type);
   }
+}
+
+function getTotalSecondsFor(type) {
+  totalSeconds = isPause ? pausedSeconds : type * secondsInAMinute;
+  isPause = false;
 }
 
 function isBeforeFinalPomodoro() {
@@ -197,12 +202,12 @@ function isAfterFinalPomodoro() {
 }
 
 function isAfterAnyBreak() {
-  return totalSeconds < 0 && isBreak
+  return totalSeconds < 0 && isBreak;
 }
 
 function breakTimerFor(type) {
-  isBreak = true;
   roundsLeft--;
+  isBreak = true;
   clearInterval(timerInterval);
   startTimerFor(type);
 }
@@ -214,11 +219,6 @@ function displayCountDown() {
   pomoSeconds.innerText = (totalSeconds % secondsInAMinute)
     .toString()
     .padStart(2, "0");
-}
-
-function getTotalSecondsFor(type) {
-  totalSeconds = pressedPause ? pausedSeconds : type * secondsInAMinute;
-  pressedPause = false;
 }
 
 function displayPauseButton() {
@@ -243,7 +243,7 @@ function displayPreset() {
 pauseButton.addEventListener("click", getPausedSeconds);
 
 function getPausedSeconds() {
-  pressedPause = true;
+  isPause = true;
   pausedSeconds = parseInt(totalSeconds);
   clearInterval(timerInterval);
   displayStartButton();
@@ -259,8 +259,8 @@ function displayStartButton() {
 clean-code:
 -functions should only do one thing
 -function name should say what it does
--function to check boolean value use "has, is, or any past tense verb"
--put conditionals in a function and use the function in the conditional statement
+-function to check boolean value use "has, is, or a statement that expects yes/no or true/false"
+-put conditionals in a function and use a descriptive function name in the conditional statement
 -avoid negative conditionals
 -keep the invoked functions directly above the originally created function
 */

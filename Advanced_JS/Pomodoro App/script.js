@@ -259,7 +259,7 @@ function displayStartButton() {
 clean-code:
 -functions should only do one thing
 -function name should say what it does
--function to check boolean value use "has, is, or a statement that expects yes/no or true/false"
+-function to check boolean value use "has, is, or a true/false statement"
 -put conditionals in a function and use a descriptive function name in the conditional statement
 -avoid negative conditionals
 -keep the invoked functions directly above the originally created function

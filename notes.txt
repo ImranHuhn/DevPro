@@ -1,3 +1,12 @@
+
+
+
+
+===========================
+functions:
+-if the contents inside a function is not being returned, it will return undefined by default
+-if you need the value from a function, you must use return
+-if you only need a function to only do action, there is no need for return
 ===============================
 clean-code:
 -functions should only do one thing

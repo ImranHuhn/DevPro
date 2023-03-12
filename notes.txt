@@ -1,4 +1,14 @@
-
+===============================
+clean-code:
+-functions should only do one thing
+-function name should say what it does
+-function to check boolean value use "has, is, or a true/false statement"
+-put conditionals in a function and use a descriptive function name in the conditional statement
+-avoid negative conditionals
+-keep the invoked functions directly above the originally created function
+============================
+-In React, it’s conventional to use on[Event] names for props which represent events and handle[Event] for the function definitions which handle the events.
+=================
 -data is just objects and arrays. like an excel spreadsheet, objects are array, columns are properties, and the entire spreadsheet is the array
 -for setIntervals, create a variable in the global scope to have access globally. then initialize the global variable in a function and you can use clearInterval anywhere in the code globally or within a function.
 =====================================

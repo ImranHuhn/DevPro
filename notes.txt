@@ -1,5 +1,6 @@
 
-
+react order/organication:
+-make sure to define a function or component before calling. so function define goes right above the function invokation and function invokation goes right below function definition
 ====================
 images:
 -use background-image in css is preferred/better instead of using img tags

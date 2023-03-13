@@ -1,7 +1,9 @@
 
 
 
-
+react components vs function:
+-the difference is that components return JSX/HTML tags and are capitalized
+-functions execute/run action code. it mutates or calculate or manipulate code
 ===========================
 functions:
 -if the contents inside a function is not being returned, it will return undefined by default

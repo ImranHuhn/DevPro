@@ -1,7 +1,9 @@
 
 
-
-
+====================================
+html/css class and id naming:
+-use class for css targeting
+-use id for javascript targeting
 ===========================
 functions:
 -if the contents inside a function is not being returned, it will return undefined by default

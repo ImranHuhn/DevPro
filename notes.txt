@@ -1,8 +1,9 @@
 
 
-
-
-
+====================
+images:
+-use background-image in css is preferred/better instead of using img tags
+===========================
 react components vs function:
 -the difference is that components return JSX/HTML tags and are capitalized
 -functions execute/run action code. it mutates or calculate or manipulate code

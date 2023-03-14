@@ -1,4 +1,10 @@
-
+closures:
+-inner function has access to variable and functions defined outside of the inner function
+===========
+react naming conventions:
+-components should be capital
+-In React, it’s conventional to use on[Event] names for props which represent events and handle[Event] for the function definitions which handle the events.
+====================
 react order/organication:
 -make sure to define a function or component before calling. so function define goes right above the function invokation and function invokation goes right below function definition
 ====================

@@ -2,10 +2,29 @@
 react functional componenet vs class component:
 -if a component has state, use class component. 
 -if a component doesnt have state, use a functional component
+=====================
+closures:
+-inner function has access to variable and functions defined outside of the inner function
+===========
+react naming conventions:
+-components should be capital
+-In React, it’s conventional to use on[Event] names for props which represent events and handle[Event] for the function definitions which handle the events.
+====================
+react order/organication:
+-make sure to define a function or component before calling. so function define goes right above the function invokation and function invokation goes right below function definition
+====================
+images:
+-use background-image in css is preferred/better instead of using img tags
+===========================
+react components vs function:
+-the difference is that components return JSX/HTML tags and are capitalized
+-functions execute/run action code. it mutates or calculate or manipulate code
+
 ====================================
 html/css class and id naming:
 -use class for css targeting
 -use id for javascript targeting
+
 ===========================
 functions:
 -if the contents inside a function is not being returned, it will return undefined by default

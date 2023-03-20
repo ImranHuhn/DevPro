@@ -1,5 +1,7 @@
 
-
+react functional componenet vs class component:
+-if a component has state, use class component. 
+-if a component doesnt have state, use a functional component
 ====================================
 html/css class and id naming:
 -use class for css targeting

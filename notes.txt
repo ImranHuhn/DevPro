@@ -1,4 +1,11 @@
 
+inline conditional(if) statements
+-'true && expression' runs expression
+-'false && expression' skips expression
+-'true ? expression1 : expression2' runs expression1
+-'false ? expression1 : expression2' runs expression2
+-'expression1 || expression2' if expression1 exist, run expression1. expression1 doesn't exist, run expression2
+===============
 react functional componenet vs class component:
 -if a component has state, use class component. 
 -if a component doesnt have state, use a functional component

@@ -1,4 +1,36 @@
 
+
+
+========================
+You can also approximate an if/else using only Logical Operators.
+
+(a && b) || c
+The above is roughly the same as saying:
+
+a ? b : c
+And of course, roughly the same as:
+
+if ( a ) { b } else { c }
+I say roughly because there is one difference with this approach, in that you have to know that the value of b will evaluate as true, otherwise you will always get c. Bascially you have to realise that the part that would appear if () { here } is now part of the condition that you place if ( here ) {  }.
+
+The above is possible due to JavaScripts behaviour of passing / returning one of the original values that formed the logical expression, which one depends on the type of operator. Certain other languages, like PHP, carry on the actual result of the operation i.e. true or false, meaning the result is always true or false; e.g:
+
+14 && 0          /// results as 0,  not false
+14 || 0          /// results as 14, not true
+1 && 2 && 3 && 4 /// results as 4,  not true
+true && ''       /// results as ''
+{} || '0'        /// results as {}
+One main benefit, compared with a normal if statement, is that the first two methods can operate on the righthand-side of an argument i.e. as part of an assignment.
+
+d = (a && b) || c;
+d = a ? b : c;
+
+if `a == true` then `d = b` else `d = c`
+The only way to achieve this with a standard if statement would be to duplicate the assigment:
+
+if ( a ) { d = b } else { d = c }
+You may ask why use just Logical Operators instead of the Ternary Operator, for simple cases you probably wouldn't, unless you wanted to make sure a and b were both true. You can also achieve more streamlined complex conditions with the Logical operators, which can get quite messy using nested ternary operations... then again if you want your code to be easily readable, neither are really that intuative.
+=====================
 inline conditional(if) statements
 -'true && expression' runs expression
 -'false && expression' skips expression

@@ -1,6 +1,6 @@
 
 
-
+-conditions if an array is empty, you will have to use double negate "!!" to skip the first condition when an array is empty. then operate normally when it is filled with atleast 1 thing in the array
 ========================
 You can also approximate an if/else using only Logical Operators.
 

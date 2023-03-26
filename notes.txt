@@ -1,5 +1,13 @@
 
 
+
+
+
+=========================
+css:
+-use padding to push elements in, use margin to push elements away
+-to have elements at the end of window but not outside of it, use translate and calculate 100% minus the element width itself
+===================
 boolean value for coniditions:
 -use negate(!) or double negate(!!) operator to turn any non-boolean output into a boolean value for conditional statements
 =========================

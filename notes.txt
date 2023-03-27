@@ -1,11 +1,31 @@
 
 
 
+conditionals that only work in functions:
+
+-// same as "if(condition) {return}" if the condition is true then stop here and return nothing. if condition is false, then run all lines after this line. this helps to check if an input field is empty or not:
+
+function foo(){
+    if(condition) return;
+    console.log("test")
+}
+foo()
+
+-// this is exactly the same as "else statement". if condition is true it returns 1. if condition is false it returns 2:
+
+function foo(){
+    if(condition) {
+        return "1";
+    }
+    return "2"
+}
+
+========================================
+
 different ways of using conditional statements:
-- if(condition) return  // same as "if(condition) {return}" if the condition is true then stop here and return nothing. if condition is false, then run all lines after this line. this helps to check if an input field is empty or not
 - if(condition) { codeblock }    // known as "if statement" aka "guard blocks". if condition is true, run the codeblock and run the lines after it. if false skip code block and run the lines after
-- if(condition) { codeblock } else { codeblock }    // known as "else statement"
-- if (condition) { codeblock } else if (condition) { codeblock } else { codeblock }       // known as "else if statement"
+- if(condition) { codeblock } else { codeblock }    // known as "else statement". else is expected to always return which is why it's the default unless a special condition stops it .
+- if (condition) { codeblock } else if (condition) { codeblock } else { codeblock }     // known as "else if statement"
 
 =========================
 css:

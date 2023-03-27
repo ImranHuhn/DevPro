@@ -2,7 +2,7 @@
 
 
 different ways of using conditional statements:
-- if(condition) return  // if the condition is true then stop here and return nothing. if condition is false, then run all lines after this line. this helps to check if an input field is empty or not
+- if(condition) return  // same as "if(condition) {return}" if the condition is true then stop here and return nothing. if condition is false, then run all lines after this line. this helps to check if an input field is empty or not
 - if(condition) { codeblock }    // known as "if statement" aka "guard blocks". if condition is true, run the codeblock and run the lines after it. if false skip code block and run the lines after
 - if(condition) { codeblock } else { codeblock }    // known as "else statement"
 - if (condition) { codeblock } else if (condition) { codeblock } else { codeblock }       // known as "else if statement"

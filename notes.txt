@@ -14,6 +14,7 @@ Either the common owner or another component higher up in the hierarchy should o
 If you can’t find a component where it makes sense to own the state, create a new component solely for holding the state and add it somewhere in the hierarchy above the common owner component.
 -app that renders correctly as a function of props and state flowing down the hierarchy. Now it’s time to support data flowing the other way
 -Let’s think about what we want to happen. We want to make sure that whenever the user changes the form, we update the state to reflect the user input. Since components should only update their own state, FilterableProductTable will pass callbacks to SearchBar that will fire whenever the state should be updated. We can use the onChange event on the inputs to be notified of it. The callbacks passed by FilterableProductTable will call setState(), and the app will be updated.
+-fragments are commonly used to prevent messing up table elements. so instead of divs, use fragment elements
 
 ===============================================
 

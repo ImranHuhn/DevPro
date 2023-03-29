@@ -1,5 +1,17 @@
 
 
+
+lifting up state:
+-replace this.state.<component> with this.props.<component>
+-props are read-only
+-props are data used to transfer and can only be read. state is data that gets changed/manipulated
+-state is usually in the component with inputs where users input data or state is where the parent has child components with inputs
+-We know that props are read-only. When the temperature was in the local state, the TemperatureInput could just call this.setState() to change it. However, now that the temperature is coming from the parent as a prop, the TemperatureInput has no control over it.
+In React, this is usually solved by making a component “controlled”. Just like the DOM <input> accepts both a value and an onChange prop, so can the custom TemperatureInput accept both temperature and onTemperatureChange props from its parent Calculator.
+Now, when the TemperatureInput wants to update its temperature, it calls this.props.onTemperatureChange:
+-setState can only be used where the state is
+
+========================================
 react notes from react docs:
 -You can build top-down or bottom-up. That is, you can either start with building the components higher up in the hierarchy (i.e. starting with FilterableProductTable) or with the ones lower in it (ProductRow). In simpler examples, it’s usually easier to go top-down, and on larger projects, it’s easier to go bottom-up and write tests as you build.
 -top hierarchy physically starts at the bottom of the file

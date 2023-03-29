@@ -307,7 +307,7 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
 
 -scope vs execution stack
     -both accesses variables differently
-    - in scope, functions have access to variables outside of the functio(codeblock)
+    -in scope, functions have access to variables outside of the functio(codeblock)
     -in execution stack, functions that are called don't have access to variables below the stack
     -execution stack deals with functions that are not nested within each other but called within each other.
     -scope deals with functions that are nested within each other

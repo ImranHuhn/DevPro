@@ -59,7 +59,7 @@ different ways of using conditional statements:
 =========================
 css:
 -use padding to push elements in, use margin to push elements away
--to have elements at the end of window but not outside of it, use translate and calculate 100% minus the element width itself
+-to have elements at the end of window but not outside of it, use translate and calculate 100% minus the element width itself ex: translate(calc(100vw - sizeOfElement))
 -use transform on the element that is already there, not on the hover or animated element
 ===================
 boolean value for coniditions:
@@ -243,10 +243,10 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
     -code management that focuses on code one at a time (code that is currently executing/running).
     -within the scope of the code black that is running/executed
     -execution context creates 4 things
-        1) global object(which is 'window' aka browser)
-        2) this (which is just the global object but in a variable called this)
-        3) outer environment (at the global level, this is just null because there's  nothing outside. at a function level, the outside environment is the global object. or a function inside a function, the outer environment is the parent/outer function)
-        4) current/executed/running code (the function/code block that's running)
+        (1) global object(which is 'window' aka browser)
+        (2) this (which is just the global object but in a variable called this)
+        (3) outer environment (at the global level, this is just null because there's  nothing outside. at a function level, the outside environment is the global object. or a function inside a function, the outer environment is the parent/outer function)
+        (4) current/executed/running code (the function/code block that's running)
 
 -object
     -object is just a collection of name/value pairs (or key/value pairs). not concerning order like array does
@@ -259,7 +259,7 @@ JavaScript: Understanding the Weird Parts - The First 3.5 Hours video
     -declaration means variable with NO value
 
 -hoisting
-    -for functions, javascript is able to execute/call functions before the function black itself
+    -for functions, javascript is able to execute/call functions before the function block itself
     -for variables, javascript is able to declare a variable with a value but cannot initialize item
     -functions are stored in memory by entirety/as whole including code block inside while variables are initialized with a placeholder called "undefined". variables get initialized with a value during the execution of the code, line by line.
     -javascript first goes through the creation phase, then execution phase. all variables are first initialized with undefined in the creation phase and all functions are created as a whole including the code block inside

@@ -1,6 +1,9 @@
 
 
-
+react file structures:
+-utils folder for react component that don't export
+-function components are for components with no state
+=====================================
 lifting up state:
 -replace this.state.<component> with this.props.<component>
 -props are read-only

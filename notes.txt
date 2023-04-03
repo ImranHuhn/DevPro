@@ -1,5 +1,11 @@
 
 
+css:
+-to customize radio button you have to customize a seperate element and place the input radio to opacity to fully tranceparent and right over the element
+==============================
+react ui:
+-if object is undefined in the ui, it's is probably because the initial state is a string. if it is, it will crash and expect a string
+=======================================
 react file structures:
 -utils folder for react component that don't export
 -function components are for components with no state

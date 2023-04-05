@@ -1,5 +1,13 @@
 
 
+
+
+react:
+-event handlers should be done in the child components, and getting the value from an event trigger is handled at the parent component where there's state
+-props should not exist where state is present. just like set state functions should only exists where state is present
+-when breaking components down, start with a functional component first. then if state is need in the that functional component, convert it to a class component with state
+-when there is a "this" keyword with a function, it is an indicator that it lives in that component
+=============
 css:
 -to customize radio button you have to customize a seperate element and place the input radio to opacity to fully tranceparent and right over the element
 ==============================

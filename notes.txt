@@ -16,8 +16,8 @@ git:
     -$ git push origin <branch>
     -@github => new pull request
     -@github => settings>collaborators>add user>open pull request>reviewers>add users>create pull request
-    -$ git checkout main
-    -$ git merge <branch>
+    -(maybe) $ git checkout main
+    -(maybe) $ git merge <branch>
 
 -after pr with request change
     -make changes locally

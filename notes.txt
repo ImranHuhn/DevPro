@@ -1,6 +1,9 @@
 
  
-
+git:
+-you can combine adding all file and committing files with the following command:
+$ git commit -am "<message>"
+===================================
 git:
 -before pullrequest(pr)
     -$ git add .
@@ -34,7 +37,7 @@ react importing order:
 1-node modules (without paths)
 2-components (without paths)
 3-relative files (with paths)
-=================================
+
 
 -from react
 -from react-router-DOM

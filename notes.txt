@@ -1,5 +1,7 @@
 
- 
+
+-task tickets should be either bug, fix, refactor, or new feature
+======================
 git:
 -you can combine adding all file and committing files with the following command:
 $ git commit -am "<message>"

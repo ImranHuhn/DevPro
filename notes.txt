@@ -1,10 +1,40 @@
 
+ 
 
+git:
+-before pullrequest(pr)
+    -$ git add .
+    -$ git commit -m "message"
+    -$ git push origin <branch>
+
+-open pr
+    -$ git add .
+    -$ git commit -m "message"
+    -$ git push origin <branch>
+    -@github => new pull request
+    -@github => settings>collaborators>add user>open pull request>reviewers>add users>create pull request
+    -$ git checkout main
+    -$ git merge <branch>
+
+-after pr with request change
+    -make changes locally
+    -$ git add .
+    -$ git commit -m "message"
+    -$ git push origin <branch>
+    -@github => click "resolve conversation"
+    -@github => click "merge pull request"
+    -click "confirm merge"
+    -$ git checkout main
+    -$ git pull main
+
+
+
+================================
 react importing order:
 1-node modules (without paths)
 2-components (without paths)
 3-relative files (with paths)
-
+=================================
 
 -from react
 -from react-router-DOM

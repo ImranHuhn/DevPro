@@ -1,4 +1,14 @@
+centering elements with css:
+-use flex or 
+-use position absolute:
+    -if you use absolute
+    -you must make the parent "position: relative"
+    -then in the "position: absolute: element add the following style properties
+        -top: 50%
+        -left: 50%
+        -transform: translate(-50%, -50%)
 
+=======================
 git
 -task tickets should be either bug, fix, refactor, or new feature
 -if you have a branch that is different, merge the last branch feature and "$ npm install" in the terminal to make sure you have all the latest changes and dependencies 

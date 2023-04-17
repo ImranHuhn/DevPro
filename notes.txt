@@ -1,5 +1,5 @@
 centering elements with css:
--use flex or 
+-use "display:flex" in the parent and "justify-content:center" or 
 -use position absolute:
     -if you use absolute
     -you must make the parent "position: relative"

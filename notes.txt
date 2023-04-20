@@ -1,3 +1,15 @@
+
+
+react: 
+-adding an array into a copy of an array
+    -[...this.state, ...[item]]
+
+-assuming item is an object, this is how to add object to an array
+    -[...this.state.checklist, list]
+
+-how to prepend object
+    
+===========================
 centering elements with css:
 -use "display:flex" in the parent and "justify-content:center" or 
 -use position absolute:

@@ -2,10 +2,10 @@
 
 react: 
 -adding an array into a copy of an array
-    -[...this.state, ...[item]]
+    -[...this.state.array, ...[newArray]]
 
 -assuming item is an object, this is how to add object to an array
-    -[...this.state.checklist, list]
+    -[...this.state.array, object]
 
 -how to prepend object
     
